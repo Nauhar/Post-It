@@ -6,7 +6,8 @@
  * Time: 10:23
  */
 
-class Messages_model extends CI_Model {
+class Messages_model extends CI_Model
+{
 
     public function __construct()
     {
@@ -15,13 +16,15 @@ class Messages_model extends CI_Model {
 
     public function getDerniersMessages()
     {
-        $query =
 
         $this->db->select('Auteur, Message, URLPhoto');
         $this->db->from('Messages');
-        $this->db->where('ValidationMessage' => TRUE);
-        $this->db->orderby('DateMessage', '')
+        $this->db->where('ValidationMessage', TRUE);
+        $this->db->order_by('DateMessage', 'DESC');
+
+        $query = $this->db->get();
 
 
         return $query->result_array();
     }
+}
