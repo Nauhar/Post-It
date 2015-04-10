@@ -1,12 +1,28 @@
 
 <h2><?php echo $title ?></h2>
 
-<?php foreach ($Messages as $Message):?>
+<div class="container-fluid">
+    <div class="row">
 
-    <ul>
-        <li><?php echo $Message['Message']?> - <?php echo $Message['Auteur']?></li>
+        <?php $i = 0 ?>
+        <?php foreach ($Messages as $Message):?>
+            <?php $i++ ?>
+
+            <?php if($i === 5){
+                echo "</div>";
+                echo "<div class='row'>";
+            }
+            ?>
+
+            <div class="col-lg-3">
+                <?php echo $Message['Message']?> - <?php echo $Message['Auteur']?>
+            </div>
+        <?php endforeach ?>
 
 
-    </ul>
+    </div>
 
-<?php endforeach ?>
+</div>
+
+
+
