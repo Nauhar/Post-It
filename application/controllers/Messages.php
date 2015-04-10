@@ -16,7 +16,7 @@ class Messages extends CI_Controller
 
     public function index($urlevenement)
     {
-        $data['Messages'] = $this->messages_model->getDerniersMessages();
+        $data['Messages'] = $this->messages_model->getDerniersMessages($urlevenement);
 
         $data['title'] = "Liste des messages a afficher";
 
@@ -25,4 +25,6 @@ class Messages extends CI_Controller
         $this->load->view('templates/footer');
 
     }
+
+
 }
