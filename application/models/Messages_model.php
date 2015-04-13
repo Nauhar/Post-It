@@ -29,4 +29,28 @@ class Messages_model extends CI_Model
 
         return $query->result_array();
     }
+
+    public function getIDFromURL($urlevenement)
+    {
+        $this->db->select('IDEvenement');
+        $this->db->where('URLEvenement', $urlevenement);
+        $query = $this->db->get('Evenements');
+
+        return $query->row_array();
+    }
+
+    public function postMessage($idevenement, $nom, $message)
+    {
+        $data = array(
+            'IDMessage' => '',
+            'Auteur' => $nom,
+            'Message' => $message,
+            'URLPhoto' => '',
+            'ValidationMessage' => 'FALSE',
+            'IDEvenement' => $idevenement
+        );
+
+        $this->db->insert('Messages', $data);
+    }
+
 }
