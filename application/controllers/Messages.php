@@ -12,8 +12,16 @@ class Messages extends CI_Controller
     {
         parent::__construct();
         $this->load->model('messages_model');
+
+        // Load session library
+        $this->load->library('session');
     }
 
+    /**
+     * Fonction de base du controller, affiche les derniers messages
+     *
+     * @param $urlevenement
+     */
     public function index($urlevenement)
     {
         $data['Messages'] = $this->messages_model->getDerniersMessages($urlevenement);
@@ -26,6 +34,11 @@ class Messages extends CI_Controller
 
     }
 
+    /**
+     * Fonction permettant de poster un nouveau message
+     *
+     * @param $urlevenement
+     */
     public function post($urlevenement)
     {
 
@@ -53,7 +66,6 @@ class Messages extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('messages/post',$data);
         $this->load->view('templates/footer');
-
     }
 
 

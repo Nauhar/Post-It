@@ -53,4 +53,14 @@ class Messages_model extends CI_Model
         $this->db->insert('Messages', $data);
     }
 
+    public function messagesAModérer($idevenement)
+    {
+        $this->db->select('IDMessage, Auteur, Message, URLPhoto');
+        $this->db->where('IDEvenement', $idevenement);
+        $this->db->order_by('DateMessage', 'ASC');
+
+        $query = $this->db->get('Messages');
+        return $query->result_array();
+    }
+
 }

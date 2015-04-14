@@ -1,13 +1,14 @@
-<html>
-<head>
+
+
     <title>Postez votre message</title>
-</head>
-<body>
+<?php
+if (($this->session->userdata('logged_in'))!== null)
+    echo $this->session->userdata('NomUtilisateur');
+?>
 
 <?php echo validation_errors(); ?>
 
 <?php
-echo $urlevenement;
 echo form_open('messages/post/'.$urlevenement);
 
 echo form_label("Votre nom", "nom");
