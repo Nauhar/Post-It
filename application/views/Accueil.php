@@ -1,17 +1,18 @@
 <title>Page d'Accueil</title>
 
+<a href="/users/login">S'identifier</a>
 
-<?php
+</br>
 
-echo form_label("S'identifier", "identification");
-echo form_input('identification', '');
-?>
+<a href="/users/new_user_registration">Créer un compte</a>
 
 </br>
 
 <?php
-echo form_label("Créer un compte", "creation_compte");
-echo form_textarea('creation_compte','');
+
+echo form_open('accueil/recherche_evenement');
+echo form_label("Rechercher le livewall d'un événement", "recherche_livewall");
+echo form_input('recherche_livewall','');
 ?>
 
 </br>
@@ -20,6 +21,8 @@ echo form_textarea('creation_compte','');
 echo form_submit('submit', 'Submit');
 echo form_close();
 ?>
+
+</br>
 
 </body>
 </html>

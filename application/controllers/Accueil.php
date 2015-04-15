@@ -28,11 +28,18 @@ class Accueil extends CI_Controller
     {
         $data['title'] = "Page d'Accueil";
 
-        echo "toto";
+
+        //}
 
         $this->load->view('templates/header', $data);
         $this->load->view('Accueil', $data);
         $this->load->view('templates/footer');
 
+    }
+
+//fonction qui recherche l'evenement
+        public function recherche_evenement()
+    {
+        $evenement = $this->input->post('recherche_livewall');
     }
 }
