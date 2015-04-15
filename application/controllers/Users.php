@@ -48,17 +48,21 @@ class Users extends CI_Controller {
         public function new_user_registration() {
 
         // Check validation for user input in SignUp form
-            $this->form_validation->set_rules('name', 'Name', 'trim|required');
-            $this->form_validation->set_rules('username', 'Username', 'trim|required');
             $this->form_validation->set_rules('email_value', 'Email', 'trim|required');
+            $this->form_validation->set_rules('nom', 'Nom', 'trim|required');
+            $this->form_validation->set_rules('prenom', 'Prenom', 'trim|required');
+            $this->form_validation->set_rules('organisation', 'Organisation', 'trim|required');
+            $this->form_validation->set_rules('pays', 'Pays', 'trim|required');
+            $this->form_validation->set_rules('ville', 'Ville', 'trim|required');
             $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
             if ($this->form_validation->run() == FALSE) {
-                $this->load->view('inscription');
+                $this->load->view('utilisateurs/inscription');
             } else {
                 $data = array(
                     'name' => $this->input->post('name'),
-                    'user_name' => $this->input->post('username'),
-                    'user_email' => $this->input->post('email_value'),
+                    //'user_name' => $this->input->post('username'),
+                    'email' => $this->input->post('email_value'),
                     'user_password' => $this->input->post('password')
                 );
                 $result = $this->users_model->registration_insert($data) ;
@@ -66,8 +70,8 @@ class Users extends CI_Controller {
                     $data['message_display'] = 'Registration Successfully !';
                     $this->load->view('login', $data);
                 } else {
-                    $data['message_display'] = 'Username already exist!';
-                    $this->load->view('inscription', $data);
+                    $data['message_display'] = 'Un compte utilisant cette adresse mail existe déjà';
+                    $this->load->view('utilisateurs/inscription', $data);
                 }
             }
         }

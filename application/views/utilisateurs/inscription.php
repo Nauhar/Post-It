@@ -10,7 +10,7 @@
         echo "</div>";
 
 
-        echo form_open('user_authentication/new_user_registration');
+        echo form_open('users/new_user_registration');
 
         echo form_label('Email : ');
         $data = array(
