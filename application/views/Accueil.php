@@ -10,6 +10,7 @@
 
 <?php
 
+//echo form_open('accueil/recherche_evenement');
 echo form_open('accueil/recherche_evenement');
 echo form_label("Rechercher le livewall d'un événement", "recherche_livewall");
 echo form_input('recherche_livewall','');
@@ -18,6 +19,7 @@ echo form_input('recherche_livewall','');
 </br>
 
 <?php
+
 echo form_submit('submit', 'Submit');
 echo form_close();
 ?>
