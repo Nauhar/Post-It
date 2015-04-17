@@ -10,7 +10,7 @@
         echo "</div>";
 
 
-        echo form_open('users/new_user_registration');
+        echo form_open('users/validation_inscription');
 
         echo form_label('Email : ');
         $data = array(
@@ -26,6 +26,10 @@
         echo form_label('Prénom : ');
         echo form_input('prenom');
 
+        echo "</br>";
+
+        echo form_label('Date de naissance : ');
+        echo form_input('datenaissance');
 
         echo "<div class='error_msg'>";
         if (isset($message_display)) {

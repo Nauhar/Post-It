@@ -45,7 +45,7 @@ class Users extends CI_Controller {
         }
 
         // Validate and store registration data in database
-        public function new_user_registration() {
+        public function validation_inscription() {
 
         // Check validation for user input in SignUp form
             $this->form_validation->set_rules('email_value', 'Email', 'trim|required');
@@ -60,15 +60,21 @@ class Users extends CI_Controller {
                 $this->load->view('utilisateurs/inscription');
             } else {
                 $data = array(
-                    'name' => $this->input->post('name'),
-                    //'user_name' => $this->input->post('username'),
-                    'email' => $this->input->post('email_value'),
-                    'user_password' => $this->input->post('password')
+                    'IDUtilisateur' => '',
+                    'NomUtilisateur' => $this->input->post('nom'),
+                    'PrenomUtilisateur' => $this->input->post('prenom'),
+                    'DateNaissance' => '',
+                    'Organisation' => $this->input->post('organisation'),
+                    'Mail' => $this->input->post('email_value'),
+                    'PasswordUtilisateur' => $this->input->post('password'),
+                    'VilleUtilisateur' => $this->input->post('ville'),
+                    'PaysUtilisateur' => $this->input->post('pays'),
+                    'DateInscription' => ''
                 );
                 $result = $this->users_model->registration_insert($data) ;
                 if ($result == TRUE) {
                     $data['message_display'] = 'Registration Successfully !';
-                    $this->load->view('login', $data);
+                    $this->load->view('utilisateurs/login', $data);
                 } else {
                     $data['message_display'] = 'Un compte utilisant cette adresse mail existe déjà';
                     $this->load->view('utilisateurs/inscription', $data);
