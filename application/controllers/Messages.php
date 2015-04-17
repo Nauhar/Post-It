@@ -25,7 +25,7 @@ class Messages extends CI_Controller
     public function index($urlevenement)
     {
         $data['Messages'] = $this->messages_model->getDerniersMessages($urlevenement);
-
+        $data['URLEvenement'] = $urlevenement;
         $data['title'] = "Liste des messages a afficher";
 
         $this->load->view('templates/header', $data);
@@ -66,6 +66,19 @@ class Messages extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('messages/post',$data);
         $this->load->view('templates/footer');
+    }
+
+    public function getMessages($urlevenement){
+        //echo "dans getMessages";
+        //if ($_POST['id']== "getmessage")
+        //{
+            //echo "OUIIIIIIII";
+
+            $all = $this->messages_model->getDerniersMessages($urlevenement);
+            echo json_encode($all);
+        //}
+
+
     }
 
 
