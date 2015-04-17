@@ -1,10 +1,18 @@
 <title>Page d'Accueil</title>
 
-<a href="/users/login">S'identifier</a>
+<div class="span12 pagination-centered">
+
+    <a href="/users/login">S'identifier</a>
+
+</div>
 
 </br>
 
+<div class="span7 text-center">
+    <div class="row vertical-center-row">
 <a href="/users/new_user_registration">Créer un compte</a>
+    </div>
+</div>
 
 </br>
 
