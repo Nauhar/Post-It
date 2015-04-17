@@ -29,7 +29,7 @@
         echo "</br>";
 
         echo form_label('Date de naissance : ');
-        echo form_input('datenaissance');
+        echo "<input type='date' name='DateNaiss' placeholder='jj/mm/aaaa'>";
 
         echo "<div class='error_msg'>";
         if (isset($message_display)) {
