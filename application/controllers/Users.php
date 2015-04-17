@@ -51,6 +51,7 @@ class Users extends CI_Controller {
             $this->form_validation->set_rules('email_value', 'Email', 'trim|required');
             $this->form_validation->set_rules('nom', 'Nom', 'trim|required');
             $this->form_validation->set_rules('prenom', 'Prenom', 'trim|required');
+            $this->form_validation->set_rules('datenaissance', 'Date de Naissance', 'trim|required');
             $this->form_validation->set_rules('organisation', 'Organisation', 'trim|required');
             $this->form_validation->set_rules('pays', 'Pays', 'trim|required');
             $this->form_validation->set_rules('ville', 'Ville', 'trim|required');
@@ -69,7 +70,6 @@ class Users extends CI_Controller {
                     'PasswordUtilisateur' => $this->input->post('password'),
                     'VilleUtilisateur' => $this->input->post('ville'),
                     'PaysUtilisateur' => $this->input->post('pays'),
-                    'DateInscription' => ''
                 );
                 $result = $this->users_model->registration_insert($data) ;
                 if ($result == TRUE) {
