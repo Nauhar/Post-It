@@ -18,10 +18,17 @@ $(document).ready(function(){
             var champ = 1;
 
             for (var i = json.length - 1; i >= 0; i--) {
-                var msg = "<p>"+json[i].Message+"<br />PAR "+json[i].Auteur.toUpperCase()+"</p>";
+                var msg = "";
+                if(json[i].URLPhoto !== "")
+                {
+                    msg = "<img src='"+json[i].URLPhoto+"' style='max-width:300px; max-height:300px;'";
+                }
 
-                console.log(champ);
-                document.getElementById("M"+champ).innerHTML = msg;
+
+                msg = msg+"<br /><p>"+json[i].Message+"<br />PAR "+json[i].Auteur.toUpperCase()+"</p>";
+
+                console.log(i);
+                document.getElementById("M"+i).innerHTML = msg;
 
                 champ +=1;
             }

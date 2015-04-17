@@ -22,6 +22,7 @@ class Messages_model extends CI_Model
         $this->db->join('Evenements', 'Evenements.IDEvenement = Messages.IDEvenement');
         $this->db->where('ValidationMessage', TRUE);
         $this->db->where('URLEvenement', $urlevenement);
+        $this->db->limit(8);
         $this->db->order_by('DateMessage', 'DESC');
 
         $query = $this->db->get();
