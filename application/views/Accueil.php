@@ -10,7 +10,7 @@
 
 <div class="span7 text-center">
     <div class="row vertical-center-row">
-<a href="/users/new_user_registration">Créer un compte</a>
+<a href="/users/validation_inscription">Créer un compte</a>
     </div>
 </div>
 
