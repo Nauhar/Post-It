@@ -59,7 +59,7 @@ var_dump ($y);
 
 $a = $this->input->server('PATH_INFO');
 $b = explode("/", $a);
-$c = $b[3];
+//$c = $b[3];
 //echo $c;
 
 ?>

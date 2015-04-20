@@ -3,7 +3,7 @@
 
 <div id="main">
     <div id="login">
-        <h2>Registration Form</h2>
+        <h2>Formulaire d'inscription</h2>
         <?php
         echo "<div class='error_msg'>";
         echo validation_errors();
@@ -18,6 +18,11 @@
             'name' => 'email_value'
         );
         echo form_input($data);
+
+        echo "</br>";
+
+        echo form_label('Mot de Passe : ');
+        echo form_password('password');
 
         echo "</br>";
 
@@ -37,24 +42,21 @@
         }
         echo "</div>";
 
-        echo form_label('Organisation');
+        echo form_label('Organisation : ');
         echo form_input('organisation');
 
         echo "</br>";
 
-        echo form_label('Pays');
+        echo form_label('Pays : ');
         echo form_input('pays');
 
         echo "</br>";
 
-        echo form_label('Ville');
+        echo form_label('Ville : ');
         echo form_input('ville');
 
-        echo form_label('Password : ');
-        echo form_password('password');
-
-        echo "</br>";
-        echo form_submit('submit', 'Sign Up');
+        echo "</br></br>";
+        echo form_submit('submit', 'Validation');
         echo form_close();
         ?>
     </div>

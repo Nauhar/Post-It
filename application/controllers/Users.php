@@ -130,7 +130,7 @@ class Users extends CI_Controller {
                         );
 
                         $this->session->set_userdata($data);
-
+                        redirect('evenement/index');
                         //$this->load->view('admin_page', $data);
 
                     }
@@ -141,6 +141,8 @@ class Users extends CI_Controller {
                     $this->load->view('utilisateurs/login', $data);
                 }
             }
+
+
         }
 
         // Logout from admin page
