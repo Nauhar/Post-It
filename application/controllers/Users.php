@@ -64,7 +64,7 @@ class Users extends CI_Controller {
                     'IDUtilisateur' => '',
                     'NomUtilisateur' => $this->input->post('nom'),
                     'PrenomUtilisateur' => $this->input->post('prenom'),
-                    'DateNaissance' => '',
+                    'DateNaissance' => $this->input->post('datenaissance'),
                     'Organisation' => $this->input->post('organisation'),
                     'Mail' => $this->input->post('email_value'),
                     'PasswordUtilisateur' => $this->input->post('password'),
