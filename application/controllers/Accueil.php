@@ -1,8 +1,6 @@
 <?php
 
 
-
-
 class Accueil extends CI_Controller
 {
 
@@ -44,7 +42,7 @@ class Accueil extends CI_Controller
     {
         $data['title'] = "Recherche de l'evenement dans la base";
         $evenement = $this->input->post('recherche_livewall');
-        echo $evenement;
+        //echo $evenement;
         $data['evenement'] = $evenement;
         if ($this->accueil_model->verifEvenement($evenement) == true)
             //si l'evenement existe on redirige vers la page de l'evenement
