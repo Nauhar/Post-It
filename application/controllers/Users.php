@@ -140,7 +140,6 @@ class Users extends CI_Controller {
                 }
             }
 
-
         }
 
         // Logout from admin page
