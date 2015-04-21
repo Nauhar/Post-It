@@ -1,0 +1,88 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 3 avr. 2015, 04:19:56
+    Author     : bernyse
+*/
+
+.container-fluid {
+  padding-right: 20px;
+  padding-left: 20px; 
+ // background-color: white;
+   margin-top : 100px;
+ 
+}
+
+ .taille{
+   
+   }
+   
+
+/*body{
+color:black;
+background-color:  ;
+//background-image:url("../../assets/img/abstract-268721_640.jpg");
+//background-repeat:no-repeat;
+//background-size: cover;
+}*/
+
+
+body{
+color:black;
+background-image:radial-gradient(white, grey);
+} 
+
+.container1{
+  padding-right: 20px;
+  padding-left: 20px; 
+ 
+}
+
+.row{
+  width: 100%;
+  background-color: white;
+  margin-bottom : 10px;
+}
+
+.identifier{
+    background-color: lightgray;  
+    color : white;
+    margin-top: 5px; 
+}
+
+.rechercher{
+    background-color: lightgray;
+    margin : auto;
+    /*color : royalblue;*/
+   margin-left: 35px;
+   font-family : georgia;
+   margin-top: 5px;
+
+}
+
+.creation{
+    background-color: lightgray; 
+      margin-top: 5px;   
+}
+
+
+[class*="col-"] {
+    display : inline; 
+  /*background-color: black;*/
+  line-height: 30px;
+  /*max-width:275px;*/
+  text-align: center;
+   border-radius: 5px 5px 5px 5px;
+   border-left: outset;
+     border-right: outset;
+   margin-bottom : 10px;
+   /*width: 100%;*/
+   word-wrap:break-word; /* adapte le contenu text à la div */
+   background-size:100% auto; /* ADAPTATION de l'image au conteneur */
+}
+
+
+  

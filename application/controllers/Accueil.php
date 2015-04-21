@@ -28,6 +28,7 @@ class Accueil extends CI_Controller
     {
         $data['title'] = "Page d'Accueil";
 
+        $this->load->view('templates/navigation');
 
         //}
 
@@ -47,7 +48,7 @@ class Accueil extends CI_Controller
         if ($this->accueil_model->verifEvenement($evenement) == true)
             //si l'evenement existe on redirige vers la page de l'evenement
             //$this->load->view('messages/index', $evenement);  // a verifier
-            redirect('messages/index/'.$evenement);
+            redirect('messages/post/'.$evenement);
         else
             redirect('accueil/index');
         $this->load->view('templates/header', $data);
