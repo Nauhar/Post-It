@@ -81,5 +81,21 @@ class Messages extends CI_Controller
 
     }
 
+    public function twitter($urlevenement){
+        echo $urlevenement;
+
+        //$this->messages_model->twitterConnect();
+
+        $res = $this->messages_model->getIDFromURL($urlevenement);
+        //var_dump($res);
+        //echo $res['IDEvenement'];
+
+        $hashtag = $this->messages_model->getEventHashtag($res['IDEvenement']);
+        var_dump($hashtag);
+
+        //$this->messages_model->
+
+    }
+
 
 }

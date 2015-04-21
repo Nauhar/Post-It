@@ -2,7 +2,7 @@
 
 <div class="span12 pagination-centered">
 
-    <a href="/users/login">S'identifier</a>
+    <a href="/index.php/users/login">S'identifier</a>
 
 </div>
 
@@ -10,7 +10,7 @@
 
 <div class="span7 text-center">
     <div class="row vertical-center-row">
-<a href="/users/validation_inscription">Créer un compte</a>
+<a href="/index.php/users/validation_inscription">Créer un compte</a>
     </div>
 </div>
 

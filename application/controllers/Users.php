@@ -1,6 +1,5 @@
 <?php
 
-//session_start();
 
 class Users extends CI_Controller {
 
@@ -98,8 +97,8 @@ class Users extends CI_Controller {
                 );
 
                 //DEBUG
-                echo $data['mail'];
-                echo $data['password'];
+                //echo $data['mail'];
+                //echo $data['password'];
                 //FIN DEBUG
 
 
@@ -115,7 +114,6 @@ class Users extends CI_Controller {
 
 
                     if($result != false){
-                        echo "OK";
 
                         $data = array(
                             'IDUtilisateur' => $result[0]->IDUtilisateur,
@@ -138,7 +136,7 @@ class Users extends CI_Controller {
                     $data = array(
                         'error_message' => 'Invalid Username or Password'
                     );
-                    $this->load->view('utilisateurs/login', $data);
+                    //$this->load->view('utilisateurs/login', $data);
                 }
             }
 
@@ -155,6 +153,12 @@ class Users extends CI_Controller {
             $this->session->unset_userdata('logged_in', $sess_array);
             $data['message_display'] = 'Successfully Logout';
             $this->load->view('utilisateurs/login', $data);
+            redirect('accueil/index');
         }
+
+    public function test(){
+        $this->load->spark('example-spark/1.0.0');
+        $this->example_spark->printHello();
+    }
 
 }

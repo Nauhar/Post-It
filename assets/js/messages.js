@@ -3,9 +3,9 @@ $(document).ready(function(){
 
     var urlevenement = 'http://localhost:8888/index.php/messages/getmessages/gala';
 
-    alert('ok');
+    //alert('ok');
 
-    alert(urlevenement);
+    //alert(urlevenement);
 
 
 
