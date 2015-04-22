@@ -1,6 +1,7 @@
 $(document).ready(function(){
-    var g_updateInterval = 3000;
+    var g_updateInterval = 6000;
 
+    var gettweets = 'http://localhost:8888/index.php/messages/twitter/gala'
     var urlevenement = 'http://localhost:8888/index.php/messages/getmessages/gala';
 
     //alert('ok');
@@ -11,6 +12,9 @@ $(document).ready(function(){
 
     function updateMsg() {
         console.log("dans updateMsg");
+
+        $.post(gettweets);
+
         $.post(urlevenement, function(data) {
             console.log(data);
 
