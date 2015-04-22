@@ -39,8 +39,8 @@
         echo "</br>";
 
         echo form_label('Nombre de participants : ');
-        echo form_input('nbparticipant');
-       // echo "<input type='integer' name='nbparticipant' placeholder=''>";
+       // echo form_input('nbparticipant');
+        echo "<input type='number' step='1' value='0' min='0'>";
 
         echo form_label('Type de l\'évènement : ');
         echo form_input('typeevents');

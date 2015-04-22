@@ -46,7 +46,7 @@
        <a href="/users/login">S'identifier</a>
     </span>
     <span class="col-lg-6 creation btn btn-lg btn-primary glyphicon glyphicon-leaf">
-     <a href="/users/new_user_registration">Créer un compte</a>
+     <a href="/users/validation_inscription">Créer un compte</a>
     </span>
 </div>
 
