@@ -1,3 +1,6 @@
+<br> <br> <br> <br> <br> <br>
+
+
 <!--<title>Page d'Accueil</title>
 <div class="span12 pagination-centered">
 
@@ -14,28 +17,36 @@
 </div>
 
 </br>
+-->
+<div class=container-fluid>
+    <span class="col-lg-6 identifier btn btn-lg btn-primary glyphicon glyphicon-user ">
+       <a href="/users/login">S'identifier</a>
+    </span>
+    <span class="col-lg-6 creation btn btn-lg btn-primary glyphicon glyphicon-leaf">
+     <a href="/users/validation_inscription">Créer un compte</a>
+    </span>
+</div>
+<?php
 
-//<?php
+echo form_open('accueil/recherche_evenement');
+echo form_open('accueil/recherche_evenement');
+echo form_label("Rechercher un événement", "recherche_livewall");
+echo form_input('recherche_livewall','');
+?>
 
-//echo form_open('accueil/recherche_evenement');
-//echo form_open('accueil/recherche_evenement');
-//echo form_label("Rechercher un événement", "recherche_livewall");
-//echo form_input('recherche_livewall','');
-//?>
 
-</br>
 
-//<?php
+<?php
 
-//echo form_submit('submit', 'Submit');
-//echo form_close();
-//?>
+echo form_submit('submit', 'Submit');
+echo form_close();
+?>
 
 </br>
 
 </body>
 </html>
--->
+<!--
 //////////////////
 <title>Page d'Accueil</title>
 

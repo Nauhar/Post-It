@@ -10,24 +10,35 @@
  <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="#Accueil">A propos de POST IT</a></li>
-                   <?php
-                   echo "<form class='navbar-form navbar-right inline-form'>
+                  <!-- <form class='navbar-form navbar-right inline-form' method="post" action="">
                         <li> <input type='search' class='input-sm form-control' placeholder=''>
                             <span> 
-                            <button type='submit' class='btn btn-primary btn-sm glyphicon glyphicon-eye-open'>
+                            <button type='submit' name='btn' class='btn btn-primary btn-sm glyphicon glyphicon-eye-open'>
                             Rechercher un évènement
-                            </button>
+                                </button>
+
                             </span>
                         </li>
-                     </form>";
-                   ?>
+                     </form>-->
+
                 </li>
              </ul>
             </div><!--/.nav-collapse -->
         </div>
     </div>  
 </div> 
-    
+
+    <?php
+    if (!empty($_POST['btn']))
+    {
+       // echo form_open("accueil/recherche_evenement");
+       // echo form_label("Rechercher le livewall d'un événement : ", "recherche_livewall");
+        //echo form_input("recherche_livewall","");
+
+        echo form_open('Messages/post/'.$urlevenement);
+    }
+?>
+
     
      
          
