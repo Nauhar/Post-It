@@ -19,7 +19,7 @@
 
         echo "</br>";
 
-           echo "<div class='error_msg'>";
+        echo "<div class='error_msg'>";
         if (isset($message_display)) {
             echo $message_display;
         }
@@ -46,8 +46,7 @@
         echo form_input('typeevents');
 
         echo form_label('Date de l\'évènement : ');
-        echo "<input type='date' name='dateevents' placeholder='jj/mm/aaaa'>";
-
+        echo "<input name='dateevents' class='datepicker'>";
         echo "</br></br></br>";
 
         echo 'PARAMETRES DE L\'EVENEMENT';
@@ -88,3 +87,13 @@
 
 <script type="text/javascript" src="/assets/js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="/assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/assets/locales/bootstrap-datepicker.fr.min.js"></script>
+
+<script  type="text/javascript">
+ $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        language: 'fr'
+    })
+
+</script>

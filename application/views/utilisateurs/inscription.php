@@ -30,11 +30,8 @@
         echo form_input('nom');
         echo form_label('Prénom : ');
         echo form_input('prenom');
-
-        echo "</br>";
-
         echo form_label('Date de naissance : ');
-        echo "<input type='date' name='datenaissance' placeholder='jj/mm/aaaa'>";
+        echo "<input name='datenaissance' class='datepicker'>";
 
         echo "<div class='error_msg'>";
         if (isset($message_display)) {
@@ -61,3 +58,16 @@
         ?>
     </div>
 </div>
+
+<script type="text/javascript" src="/assets/js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/assets/locales/bootstrap-datepicker.fr.min.js"></script>
+
+<script  type="text/javascript">
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        language: 'fr'
+    })
+
+</script>

@@ -1,10 +1,6 @@
 
 
     <title>Postez votre message</title>
-<?php
-if (($this->session->userdata('logged_in'))!== null)
-    echo $this->session->userdata('NomUtilisateur');
-?>
 
 <?php echo validation_errors(); ?>
 
