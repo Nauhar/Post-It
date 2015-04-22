@@ -40,7 +40,7 @@
 
         echo form_label('Nombre de participants : ');
        // echo form_input('nbparticipant');
-        echo "<input type='number' step='1' value='0' min='0'>";
+        echo "<input type='number' name='nbparticipant' min='0'>";
 
         echo form_label('Type de l\'évènement : ');
         echo form_input('typeevents');
@@ -85,3 +85,6 @@
         ?>
     </div>
 </div>
+
+<script type="text/javascript" src="/assets/js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.js"></script>
