@@ -1,8 +1,8 @@
 <?php
 
-echo "Liste des évènements";
+echo "<h2>Liste des évènements</h2>";
 
-echo "</br></br></br>";
+echo "</br>";
 ?>
 
     <div class="container-fluid" style='margin-left: 10px;'>

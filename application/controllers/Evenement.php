@@ -91,8 +91,27 @@ class Evenement extends CI_Controller
                 $data['message_display'] = 'L\'url choisie existe déjà';
                 $this->load->view('evenements/formulaire_evenement', $data);
             }
+
+            //récupération ID evenement
+            $id = $this->evenement_model->getIDFromURL($data['URLEvenement']);
+
+            //insertion params
+            $this->form_validation->set_rules('passwordmoderation', 'Mot de passe de modération', 'trim|required');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('evenements/formulaire_evenement');
+            } else {
+                $data2 = array(
+                    'IDEvenement' => $id['IDEvenement'],
+                    'HashtagASuivre' => $this->input->post('hastag'),
+                    'ModerationTexte' => $this->input->post('moderationtxt'),
+                    'ModerationImage' => $this->input->post('moderationimage'),
+                    'PasswordModeration' => $this->input->post('passwordmoderation'),
+                    'FiltreObscenite' => $this->input->post('motinterdit')
+                );
+                $resultat = $this->evenement_model->paramevenements_insert($data2) ;
+                            }
         }
     }
-
 }
 

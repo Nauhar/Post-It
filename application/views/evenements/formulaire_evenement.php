@@ -10,6 +10,8 @@
 
         echo form_open('evenement/validation_evenement');
 
+        echo 'INFORMATIONS GENERALES DE L\'EVENEMENT';
+        echo "</br></br>";
         echo form_label('Nom de l\'évènement : ');
         echo form_input('nomevents');
         echo form_label('URL de l\'évènement : ');
@@ -38,6 +40,7 @@
 
         echo form_label('Nombre de participants : ');
         echo form_input('nbparticipant');
+       // echo "<input type='integer' name='nbparticipant' placeholder=''>";
 
         echo form_label('Type de l\'évènement : ');
         echo form_input('typeevents');
@@ -51,29 +54,30 @@
 
         echo "</br></br>";
 
-        echo form_label('Hastage à suivre : #');
+        echo form_label('Hastag à suivre : #&nbsp');
         echo form_input('hastag');
 
         echo "</br>";
 
-        echo form_label('Modération texte : ');
-        echo form_input('moderationtxt');
+        echo form_label('Modération texte :&nbsp');
+        echo form_checkbox('moderationtxt', '1');
+        echo "<font size='1,5'> Cochez la case si vous souhaitez modérer les messages</font>";
 
         echo "</br>";
 
-        echo form_label('Modération image : ');
-        echo form_input('moderationimage');
-
+        echo form_label('Modération image :&nbsp');
+        echo form_checkbox('moderationimage', '1');
+        echo "<font size='1,5'> Cochez la case si vous souhaitez modérer les images</font>";
         echo "</br>";
 
-        echo form_label('Mot de passe modération : ');
+        echo form_label('Mot de passe modération :&nbsp');
         echo form_input('passwordmoderation');
 
         echo "</br>";
 
-        echo form_label('Mots interdits : ');
-        echo form_input('motinterdit');
-
+        echo form_label('Mots interdits :&nbsp');
+        echo form_checkbox('motinterdit', '1');
+        echo "<font size='1,5'> Cochez la case si vous souhaitez interdire l'utilisation de certains mots prédéfinis</font>";
         echo "</br></br>";
 
         echo form_submit('submit', 'Validation');

@@ -19,7 +19,7 @@ class Evenement_model extends CI_Model
         return $query->result_array();
     }
 
-    // Insérer l'évenement dans la base de données
+    // Insérer l'évenement dans la table évènement
     public function evenement_insert($data) {
 
         // On vérifie que l'url choisie n'existe pas dans la base de données
@@ -39,4 +39,21 @@ class Evenement_model extends CI_Model
             return false;
         }
     }
+
+    // Insérer les paramètres de l'évenement dans la base de données
+    public function paramevenements_insert($data2) {
+        // Query to insert data in database
+        $data2['PasswordModeration'] = md5($data2['PasswordModeration']);
+        $this->db->insert('ParametresEvenement', $data2);
+    }
+
+    public function getIDFromURL($urlevenement)
+    {
+        $this->db->select('IDEvenement');
+        $this->db->where('URLEvenement', $urlevenement);
+        $query = $this->db->get('Evenements');
+
+        return $query->row_array();
+    }
+
 }
