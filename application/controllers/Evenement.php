@@ -23,13 +23,10 @@ class Evenement extends CI_Controller
         {
             $data['title'] = "Liste des evenements";
 
-            //requete récuperer evenements de l'utilisateurs
+            //requete permettant de récuperer les evenements de l'utilisateur
             $data['evenements'] = $this->evenement_model->getEvenementUtilisateur($this->session->userdata['IDUtilisateur']);
 
-
             //affichage
-
-
             $this->load->view('templates/header', $data);
             //echo $this->session->userdata['IDUtilisateur'];
             $this->load->view('evenements/liste_evenements', $data);

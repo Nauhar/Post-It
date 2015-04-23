@@ -123,9 +123,13 @@ class Messages extends CI_Controller
             echo "<br/><img src='" . $media . "' />";
         }
 
-
-
     }
 
+    public function moderation_msg($urlevenement){
+        //requete permettant de récuperer les messages liés à un evenement
+        $id = $this->messages_model->getIDFromURL($urlevenement);
+        $msg['moderationmessages'] = $this->messages_model->messagesAModérer($id['IDEvenement']);
 
+        $this->load->view('messages/moderation',$msg);
+    }
 }

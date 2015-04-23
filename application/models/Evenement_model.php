@@ -8,6 +8,7 @@ class Evenement_model extends CI_Model
         $this->load->database();
     }
 
+    //Récupérer la liste des évènements de l'utilisateur connecté
     public function getEvenementUtilisateur($iduser){
 
         $this->db->select('*');

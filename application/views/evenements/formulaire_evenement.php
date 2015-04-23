@@ -58,15 +58,10 @@
 
         echo "</br>";
 
-        echo form_label('Modération texte :&nbsp');
+        echo form_label('Modération :&nbsp');
         echo form_checkbox('moderationtxt', '1');
         echo "<font size='1,5'> Cochez la case si vous souhaitez modérer les messages</font>";
 
-        echo "</br>";
-
-        echo form_label('Modération image :&nbsp');
-        echo form_checkbox('moderationimage', '1');
-        echo "<font size='1,5'> Cochez la case si vous souhaitez modérer les images</font>";
         echo "</br>";
 
         echo form_label('Mot de passe modération :&nbsp');
