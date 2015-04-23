@@ -66,21 +66,6 @@ class Messages_model extends CI_Model
         return $query->result_array();
     }
 
-    public function twitterConnect()
-    {
-        define('CONSUMER_KEY', 'FUTulGUOBPBFFXnfGHu0EiXXX');
-        define('CONSUMER_SECRET', 'qXdKaiVc5tKjsgyJMhukxrd7teMSvG0GWdSmwooswniyaV7T1N');
-        define('OAUTH_CALLBACK', '/messages/index/gala');
-
-        $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
-        $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => OAUTH_CALLBACK));
-
-        $_SESSION['oauth_token'] = $request_token['oauth_token'];
-        $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
-    }
-
-
-
     public function getTweets($hashtag)
     {
         define('CONSUMER_KEY', 'FUTulGUOBPBFFXnfGHu0EiXXX');
@@ -111,8 +96,6 @@ class Messages_model extends CI_Model
     public function postTweet($idevenement, $nom, $message, $photo, $idtweet)
     {
 
-
-        $condition = "IDMessage =".$idtweet;
         $this->db->select('*');
         $this->db->from('Messages');
         $this->db->where('IDMessage', intval($idtweet));

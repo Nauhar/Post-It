@@ -82,50 +82,46 @@ class Messages extends CI_Controller
     }
 
     public function twitter($urlevenement){
-        if (isset($this->session->userdata['oauth_token'])){
-            //echo "connecté a twitter";
-        }else{
-            echo "non connecté a twitter, on se connecte";
-        }
 
         $IDevent = $this->messages_model->getIDFromURL($urlevenement);
 
         $hashtag = $this->messages_model->getEventHashtag($IDevent['IDEvenement']);
 
-        //On récupère les tweets du hashtag a suivre
-        $tweets = $this->messages_model->getTweets($hashtag['HashtagASuivre']);
-        var_dump($tweets);
+        if(isset($hashtag['HashtagASuivre'])) {
+            //On récupère les tweets du hashtag a suivre
+            $tweets = $this->messages_model->getTweets($hashtag['HashtagASuivre']);
+            var_dump($tweets);
 
-        $i = 0;
-        foreach($tweets->statuses as $status){
-            $idTweet = $status->id_str;
-            $nom = $status->user->screen_name;
-            $message = $status->text;
+            $i = 0;
+            foreach ($tweets->statuses as $status) {
+                $idTweet = $status->id_str;
+                $nom = $status->user->screen_name;
+                $message = $status->text;
 
-            if(isset($status->entities->media[0]->media_url)){
-                $photo = $status->entities->media[0]->media_url;
-            }else{
-                $photo = '';
+                if (isset($status->entities->media[0]->media_url)) {
+                    $photo = $status->entities->media[0]->media_url;
+                } else {
+                    $photo = '';
+                }
+
+                echo "<br/>" . $idTweet;
+                //echo "<br/>status ".$i;
+                //echo "<br/>".$status->text;
+                //echo "<br/>".$nom;
+                $i++;
+
+                $this->messages_model->postTweet($IDevent['IDEvenement'], $nom, $message, $photo, $idTweet);
             }
 
-            echo "<br/>".$idTweet;
-            //echo "<br/>status ".$i;
-            //echo "<br/>".$status->text;
-            //echo "<br/>".$nom;
-            $i++;
+            $test = $tweets->statuses[0]->text;
+            echo "<br/><br/>" . $test;
 
-            $this->messages_model->postTweet($IDevent['IDEvenement'], $nom, $message, $photo, $idTweet);
+            $username = $tweets->statuses[0]->user->screen_name;
+            echo " - " . $username;
+
+            $media = $tweets->statuses[0]->entities->media[0]->media_url;
+            echo "<br/><img src='" . $media . "' />";
         }
-
-        $test = $tweets->statuses[0]->text;
-        echo "<br/><br/>".$test;
-
-        $username = $tweets->statuses[0]->user->screen_name;
-        echo " - ".$username;
-
-        $media = $tweets->statuses[0]->entities->media[0]->media_url;
-        echo "<br/><img src='".$media."' />";
-
 
 
 

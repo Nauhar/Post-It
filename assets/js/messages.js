@@ -1,19 +1,16 @@
 $(document).ready(function(){
     var g_updateInterval = 6000;
 
-    var gettweets = 'http://localhost:8888/index.php/messages/twitter/gala'
-    var urlevenement = 'http://localhost:8888/index.php/messages/getmessages/gala';
+    var gettweets = 'http://localhost:8888/index.php/messages/twitter/'+arg;
+    var urlevenement = 'http://localhost:8888/index.php/messages/getmessages/'+arg;
 
-    //alert('ok');
-
-    //alert(urlevenement);
 
 
 
     function updateMsg() {
-        console.log("dans updateMsg");
+        //console.log("dans updateMsg");
 
-        $.post(gettweets);
+        $.post(gettweets, function(){});
 
         $.post(urlevenement, function(data) {
             console.log(data);
@@ -31,7 +28,7 @@ $(document).ready(function(){
 
                 msg = msg+"<br /><p>"+json[i].Message+"<br />PAR "+json[i].Auteur.toUpperCase()+"</p>";
 
-                console.log(i);
+                //console.log(i);
                 document.getElementById("M"+i).innerHTML = msg;
 
                 champ +=1;
