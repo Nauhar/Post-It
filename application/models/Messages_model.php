@@ -66,7 +66,7 @@ class Messages_model extends CI_Model
         return $query->result_array();
     }
 
-    public function twitterConnect()
+    public function getTweets($hashtag)
     {
         define('CONSUMER_KEY', 'FUTulGUOBPBFFXnfGHu0EiXXX');
         define('CONSUMER_SECRET', 'qXdKaiVc5tKjsgyJMhukxrd7teMSvG0GWdSmwooswniyaV7T1N');
@@ -77,26 +77,14 @@ class Messages_model extends CI_Model
 
         $_SESSION['oauth_token'] = $request_token['oauth_token'];
         $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
-    }
 
+        $statuses = $connection->get("search/tweets", array("q" => "%23".$hashtag));
 
-
-    public function getTweets()
-    {
-        $content = $connection->get("account/verify_credentials");
-
-        $statuses = $connection->get("search/tweets", array("q" => "%23galamiagebdx"));
-
-        var_dump($_SESSION);
-        echo "<br/><br/><br/>";
-        var_dump($content);
-        echo "<br/><br/><br/>";
-        var_dump($statuses);
+        return $statuses;
 
     }
 
     public function getEventHashtag($idevenement){
-        var_dump($idevenement);
         $this->db->select('HashtagASuivre');
         $this->db->where('IDEvenement', $idevenement);
         $this->db->limit(1);
@@ -105,4 +93,34 @@ class Messages_model extends CI_Model
         return $query->row_array();
     }
 
+    public function postTweet($idevenement, $nom, $message, $photo, $idtweet)
+    {
+
+        $this->db->select('*');
+        $this->db->from('Messages');
+        $this->db->where('IDMessage', intval($idtweet));
+        $this->db->limit(1);
+
+        var_dump(intval($idtweet));
+        $query = $this->db->get();
+        echo "<br/><br/><br/>";
+        var_dump($query);
+
+        if ($query->num_rows() == 0) {
+            echo "dans IF";
+            // Query to insert data in database
+            $data = array(
+                'IDMessage' => intval($idtweet),
+                'Auteur' => $nom,
+                'Message' => $message,
+                'URLPhoto' => $photo,
+                'ValidationMessage' => 'FALSE',
+                'IDEvenement' => $idevenement
+            );
+
+            echo "data['IDMessage'] : ".$data['IDMessage'];
+
+            $this->db->insert('Messages', $data);
+        }
+    }
 }

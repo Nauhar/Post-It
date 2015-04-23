@@ -82,18 +82,48 @@ class Messages extends CI_Controller
     }
 
     public function twitter($urlevenement){
-        echo $urlevenement;
 
-        //$this->messages_model->twitterConnect();
+        $IDevent = $this->messages_model->getIDFromURL($urlevenement);
 
-        $res = $this->messages_model->getIDFromURL($urlevenement);
-        //var_dump($res);
-        //echo $res['IDEvenement'];
+        $hashtag = $this->messages_model->getEventHashtag($IDevent['IDEvenement']);
 
-        $hashtag = $this->messages_model->getEventHashtag($res['IDEvenement']);
-        var_dump($hashtag);
+        if(isset($hashtag['HashtagASuivre'])) {
+            //On récupère les tweets du hashtag a suivre
+            $tweets = $this->messages_model->getTweets($hashtag['HashtagASuivre']);
+            var_dump($tweets);
 
-        //$this->messages_model->
+            $i = 0;
+            foreach ($tweets->statuses as $status) {
+                $idTweet = $status->id_str;
+                $nom = $status->user->screen_name;
+                $message = $status->text;
+
+                if (isset($status->entities->media[0]->media_url)) {
+                    $photo = $status->entities->media[0]->media_url;
+                } else {
+                    $photo = '';
+                }
+
+                echo "<br/>" . $idTweet;
+                //echo "<br/>status ".$i;
+                //echo "<br/>".$status->text;
+                //echo "<br/>".$nom;
+                $i++;
+
+                $this->messages_model->postTweet($IDevent['IDEvenement'], $nom, $message, $photo, $idTweet);
+            }
+
+            $test = $tweets->statuses[0]->text;
+            echo "<br/><br/>" . $test;
+
+            $username = $tweets->statuses[0]->user->screen_name;
+            echo " - " . $username;
+
+            $media = $tweets->statuses[0]->entities->media[0]->media_url;
+            echo "<br/><img src='" . $media . "' />";
+        }
+
+
 
     }
 
