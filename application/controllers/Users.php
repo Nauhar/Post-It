@@ -136,7 +136,7 @@ class Users extends CI_Controller {
                     $data = array(
                         'error_message' => 'Invalid Username or Password'
                     );
-                    //$this->load->view('utilisateurs/login', $data);
+                    $this->load->view('utilisateurs/login', $data);
                 }
             }
 
