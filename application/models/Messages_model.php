@@ -60,7 +60,7 @@ class Messages_model extends CI_Model
     {
         $this->db->select('IDMessage, Auteur, Message, URLPhoto, DateMessage');
         $this->db->where('IDEvenement', $idevenement);
-        //$this->db->where('ValidationMessage', 0);
+        $this->db->where('ValidationMessage', 0);
         $this->db->order_by('DateMessage', 'ASC');
 
         $query = $this->db->get('Messages');

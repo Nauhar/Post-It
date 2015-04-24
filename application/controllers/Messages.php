@@ -130,6 +130,8 @@ class Messages extends CI_Controller
         $id = $this->messages_model->getIDFromURL($urlevenement);
         $msg['moderationmessages'] = $this->messages_model->messagesAModérer($id['IDEvenement']);
 
+        $this->load->view('templates/header');
         $this->load->view('messages/moderation',$msg);
+        $this->load->view('templates/footer');
     }
 }
