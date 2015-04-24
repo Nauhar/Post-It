@@ -8,16 +8,15 @@ class Evenement_model extends CI_Model
         $this->load->database();
     }
 
-    //Récupérer la liste des évènements de l'utilisateur connecté
     public function getEvenementUtilisateur($iduser){
 
-        $this->db->select('*');
-        $this->db->from('Evenements');
-        $this->db->where('IDUtilisateur', $iduser);
-        $this->db->order_by('DateEvenement', 'DESC');
+            $this->db->select('*');
+            $this->db->from('Evenements');
+            $this->db->where('IDUtilisateur', $iduser);
+            $this->db->order_by('DateEvenement', 'DESC');
 
-        $query = $this->db->get();
-        return $query->result_array();
+            $query = $this->db->get();
+            return $query->result_array();
     }
 
     // Insérer l'évenement dans la table évènement
