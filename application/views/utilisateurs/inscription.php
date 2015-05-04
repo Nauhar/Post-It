@@ -1,9 +1,14 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 
+<br>
+
+<div class="container">
+<div class="jumbotron"
 <div id="main">
     <div id="login">
-        <h2>Formulaire d'inscription</h2>
+        <h2 class="">Formulaire d'inscription</h2>
         <?php
         echo "<div class='error_msg'>";
         echo validation_errors();
@@ -57,6 +62,8 @@
         echo form_close();
         ?>
     </div>
+</div>
+</div>
 </div>
 
 <script type="text/javascript" src="/assets/js/jquery-2.1.3.min.js"></script>

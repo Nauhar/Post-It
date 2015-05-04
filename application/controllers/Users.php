@@ -115,7 +115,6 @@ public function validation_inscription() {
                     $this->session->set_userdata('logged_in', $sess_array);
                     $result = $this->users_model->read_user_information($sess_array);
 
-
                     if($result != false){
 
                         $data = array(
