@@ -19,7 +19,7 @@
 <div class="container">
     <div class="jumbotron" >
         <h2> Partagez vos émotions </h2>
-        <p>POST IT est un .....</p>
+        <p>POST IT est un site qui permet de poster vos messages en direct lors de vos évènements</p>
 
         <?php
         echo "<div class='error_msg'>";
