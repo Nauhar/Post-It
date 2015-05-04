@@ -81,7 +81,7 @@ public function validation_inscription() {
                 );
                 $result = $this->users_model->registration_insert($data) ;
                 if ($result == TRUE) {
-                    $this->session->set_flashdata('message_display', 'Compte crée avec succès !');
+                    $this->session->set_flashdata('message_display', 'Compte créé avec succès !');
                     redirect('/users/login');
                 } else {
                     $data['message_display'] = 'Un compte utilisant cette adresse mail existe déjà';
@@ -150,11 +150,13 @@ public function validation_inscription() {
 
         // Removing session data
             $sess_array = array(
+                'IDUtilisateur' => '',
                 'mail' => ''
             );
+            session_destroy();
             $this->session->unset_userdata('logged_in', $sess_array);
             $data['message_display'] = 'Successfully Logout';
-            $this->load->view('utilisateurs/login', $data);
+            //$this->load->view('utilisateurs/login', $data);
             redirect('accueil/index');
         }
 

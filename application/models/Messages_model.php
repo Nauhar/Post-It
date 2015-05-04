@@ -64,6 +64,7 @@ class Messages_model extends CI_Model
         $this->db->order_by('DateMessage', 'ASC');
 
         $query = $this->db->get('Messages');
+
         return $query->result_array();
     }
 
@@ -120,5 +121,13 @@ class Messages_model extends CI_Model
 
             $this->db->insert('Messages', $data);
         }
+    }
+
+    public function validemessage($id)
+    {
+
+        $this->db->set('ValidationMessage', 1);
+        $this->db->where('IDMessage', $id);
+        $this->db->update('Messages');
     }
 }

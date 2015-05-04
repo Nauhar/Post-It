@@ -105,9 +105,14 @@ class Messages extends CI_Controller
         //requete permettant de récuperer les messages liés à un evenement
         $id = $this->messages_model->getIDFromURL($urlevenement);
         $msg['moderationmessages'] = $this->messages_model->messagesAModérer($id['IDEvenement']);
+        $msg['url'] = $urlevenement;
 
         $this->load->view('templates/header');
         $this->load->view('messages/moderation',$msg);
         $this->load->view('templates/footer');
+    }
+
+    public function validermessage($id){
+        $this->messages_model->validemessage($id);
     }
 }

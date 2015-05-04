@@ -40,18 +40,19 @@ class Evenement extends CI_Controller
 
     public function creation_evenement()
 {
-    if ($this->session->userdata['IDUtilisateur'] !== null)
-    {
+    //var_dump($this->session->userdata['IDUtilisateur']);
+    if (isset($this->session->userdata['IDUtilisateur'])){
         $data['title'] = "Créer un evenement";
         $this->load->view('templates/header', $data);
         //echo $this->session->userdata['IDUtilisateur'];
         $this->load->view('evenements/formulaire_evenement', $data);
         $this->load->view('templates/footer');
-    }
-    else
-    {
+
+    }else{
+        $this->session->set_flashdata('message_display', 'Veuillez vous connecter');
         redirect('users/login');
     }
+
 }
 
     public function validation_evenement(){
@@ -80,6 +81,7 @@ class Evenement extends CI_Controller
                 'IDUtilisateur' => $this->session->userdata('IDUtilisateur'),
                 'DateEvenement' => $this->input->post('dateevents')
             );
+
             $result = $this->evenement_model->evenement_insert($data) ;
             if ($result == TRUE) {
                 $data['message_display'] = 'Evènement créé avec succès !';
