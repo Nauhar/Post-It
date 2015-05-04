@@ -69,16 +69,8 @@ class Messages extends CI_Controller
     }
 
     public function getMessages($urlevenement){
-        //echo "dans getMessages";
-        //if ($_POST['id']== "getmessage")
-        //{
-            //echo "OUIIIIIIII";
-
-            $all = $this->messages_model->getDerniersMessages($urlevenement);
-            echo json_encode($all);
-        //}
-
-
+        $all = $this->messages_model->getDerniersMessages($urlevenement);
+        echo json_encode($all);
     }
 
     public function twitter($urlevenement){
@@ -90,9 +82,7 @@ class Messages extends CI_Controller
         if(isset($hashtag['HashtagASuivre'])) {
             //On récupère les tweets du hashtag a suivre
             $tweets = $this->messages_model->getTweets($hashtag['HashtagASuivre']);
-            var_dump($tweets);
 
-            $i = 0;
             foreach ($tweets->statuses as $status) {
                 $idTweet = $status->id_str;
                 $nom = $status->user->screen_name;
@@ -104,23 +94,9 @@ class Messages extends CI_Controller
                     $photo = '';
                 }
 
-                echo "<br/>" . $idTweet;
-                //echo "<br/>status ".$i;
-                //echo "<br/>".$status->text;
-                //echo "<br/>".$nom;
-                $i++;
-
                 $this->messages_model->postTweet($IDevent['IDEvenement'], $nom, $message, $photo, $idTweet);
             }
 
-            $test = $tweets->statuses[0]->text;
-            echo "<br/><br/>" . $test;
-
-            $username = $tweets->statuses[0]->user->screen_name;
-            echo " - " . $username;
-
-            $media = $tweets->statuses[0]->entities->media[0]->media_url;
-            echo "<br/><img src='" . $media . "' />";
         }
 
     }

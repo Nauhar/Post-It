@@ -10,6 +10,24 @@
  <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="#Accueil">A propos de POST IT</a></li>
+
+                <?php if (isset($this->session->userdata['logged_in'])) {
+                    echo "<li><a href='/index.php/evenement/index'>Mes évènements</a></li>";
+                }?>
+
+
+                <?php if (isset($this->session->userdata['logged_in'])) {
+                    //Si on est connecté
+                    // ajouter le code HTML dans un echo""
+                }
+                else{
+                    //Si on est pas connecté
+                    //Ajouter le code HTML dans un echo ""
+
+                }
+                ?>
+
+
                   <!-- <form class='navbar-form navbar-right inline-form' method="post" action="">
                         <li> <input type='search' class='input-sm form-control' placeholder=''>
                             <span> 
@@ -21,7 +39,7 @@
                         </li>
                      </form>-->
 
-                </li>
+
              </ul>
             </div><!--/.nav-collapse -->
         </div>

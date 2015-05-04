@@ -18,12 +18,23 @@
 
 </br>
 -->
+
+<?php
+echo "<div class='error_msg'>";
+if (isset($error_message)) {
+    echo $error_message;
+}
+echo validation_errors();
+echo "</div>";
+?>
+
+
 <div class=container-fluid>
     <span class="col-lg-6 identifier btn btn-lg btn-primary glyphicon glyphicon-user ">
-       <a href="/users/login">S'identifier</a>
+       <a href="/index.php/users/login">S'identifier</a>
     </span>
     <span class="col-lg-6 creation btn btn-lg btn-primary glyphicon glyphicon-leaf">
-     <a href="/users/validation_inscription">Créer un compte</a>
+     <a href="/index.php/users/inscription">Créer un compte</a>
     </span>
 </div>
 <?php

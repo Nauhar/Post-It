@@ -24,7 +24,7 @@ class Users extends CI_Controller {
                 $data['title'] = 'Liste utilisateurs';
 
                 $this->load->view('templates/header', $data);
-                $this->load->view('users/index', $data);
+                $this->load->view('utilisateurs/index', $data);
                 $this->load->view('templates/footer');
         }
 
@@ -35,19 +35,28 @@ class Users extends CI_Controller {
 
         public function login()
         {
-            $this->load->view('utilisateurs/login');
+            $data['message_display'] = $this->session->flashdata('message_display');
+            $this->load->view('utilisateurs/login', $data);
         }
 
         public function inscription()
         {
-            $this->load->view('utilisateurs/inscription');
+
+            if (isset($this->session->userdata['logged_in'])){
+
+                $this->session->set_flashdata('error_message', 'Vous êtes déjà connecté');
+                redirect('accueil/index');
+            }
+            else {
+                $this->load->view('utilisateurs/inscription');
+            }
         }
 
         // Validate and store registration data in database
-        public function validation_inscription() {
+public function validation_inscription() {
 
         // Check validation for user input in SignUp form
-            $this->form_validation->set_rules('email_value', 'Email', 'trim|required');
+            $this->form_validation->set_rules('email_value', 'Email', 'trim|required|valid_email');
             $this->form_validation->set_rules('nom', 'Nom', 'trim|required');
             $this->form_validation->set_rules('prenom', 'Prenom', 'trim|required');
             $this->form_validation->set_rules('datenaissance', 'Date de Naissance', 'trim|required');
@@ -57,7 +66,7 @@ class Users extends CI_Controller {
             $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
             if ($this->form_validation->run() == FALSE) {
-                $this->load->view('utilisateurs/inscription');
+                redirect('/users/inscription');
             } else {
                 $data = array(
                     'IDUtilisateur' => '',
@@ -72,8 +81,8 @@ class Users extends CI_Controller {
                 );
                 $result = $this->users_model->registration_insert($data) ;
                 if ($result == TRUE) {
-                    $data['message_display'] = 'Registration Successfully !';
-                    $this->load->view('utilisateurs/login', $data);
+                    $this->session->set_flashdata('message_display', 'Compte crée avec succès !');
+                    redirect('/users/login');
                 } else {
                     $data['message_display'] = 'Un compte utilisant cette adresse mail existe déjà';
                     $this->load->view('utilisateurs/inscription', $data);
@@ -95,12 +104,6 @@ class Users extends CI_Controller {
                     'mail' => $this->input->post('mail'),
                     'password' => $this->input->post('password')
                 );
-
-                //DEBUG
-                //echo $data['mail'];
-                //echo $data['password'];
-                //FIN DEBUG
-
 
                 $result = $this->users_model->login($data);
                 if($result == TRUE){

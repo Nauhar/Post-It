@@ -14,8 +14,8 @@ echo "</br>";
             <?php echo "<div class='col-lg-2'>".$evenement['Lieu']."</div>"?>
             <?php echo "<div class='col-lg-2'>".$evenement['VilleEvenement']."</div>"?>
             <?php echo "<div class='col-lg-1'>".$evenement['DateEvenement']."</div>"?>
-            <?php echo "<div class='col-lg-1'><a href='/messages/index/$evenement[URLEvenement]'>"."Livewall"."</a></div>"?>
-            <?php echo "<div class='col-lg-1'><a href='/messages/moderation_msg/$evenement[URLEvenement]'>"."Modération"."</a></div>"?>
+            <?php echo "<div class='col-lg-1'><a href='/index.php/messages/index/$evenement[URLEvenement]'>"."Livewall"."</a></div>"?>
+            <?php echo "<div class='col-lg-1'><a href='/index.php/messages/moderation_msg/$evenement[URLEvenement]'>"."Modération"."</a></div>"?>
     </div>
     <?php endforeach ?>
     </div>

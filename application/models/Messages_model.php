@@ -102,13 +102,10 @@ class Messages_model extends CI_Model
         $this->db->where('IDMessage', intval($idtweet));
         $this->db->limit(1);
 
-        var_dump(intval($idtweet));
         $query = $this->db->get();
-        echo "<br/><br/><br/>";
-        var_dump($query);
+
 
         if ($query->num_rows() == 0) {
-            echo "dans IF";
             // Query to insert data in database
             $data = array(
                 'IDMessage' => intval($idtweet),

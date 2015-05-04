@@ -26,6 +26,8 @@ class Accueil extends CI_Controller
      */
     public function index()
     {
+        $data['error_message'] = $this->session->flashdata('error_message');
+
         $data['title'] = "Page d'Accueil";
 
         $this->load->view('templates/navigation');

@@ -4,9 +4,6 @@ $(document).ready(function(){
     var gettweets = 'http://localhost:8888/index.php/messages/twitter/'+arg;
     var urlevenement = 'http://localhost:8888/index.php/messages/getmessages/'+arg;
 
-
-
-
     function updateMsg() {
         //console.log("dans updateMsg");
 
