@@ -22,9 +22,10 @@
         }
         ?>
 
-        <a href="#" onclick="valider(<?php echo $moderationmessage['IDMessage']; ?>);" class="btn btn-success">Approuver</a>
+        <a href="#" onclick="valider(<?php echo strval($moderationmessage['IDMessage']); ?>)" class="btn btn-success">Approuver</a>
         <?php
-            echo "<a href='#' onclick='valider(\'".$moderationmessage['IDMessage']."\')' class='btn btn-sm btn-success'>pouet</a>";
+            echo strval($moderationmessage['IDMessage']);
+            echo "<a href='#' onclick='valider(".$moderationmessage['IDMessage'].");' class='btn btn-sm btn-success'>pouet</a>";
             echo "<button class='btn btn-sm btn-success' type='button'>Valider</button>&nbsp";
             echo "<button class='btn btn-sm btn-danger' type='button'>Supprimer</button>";
         echo "</div>";

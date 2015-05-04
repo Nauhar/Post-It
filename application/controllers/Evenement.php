@@ -43,6 +43,8 @@ class Evenement extends CI_Controller
     //var_dump($this->session->userdata['IDUtilisateur']);
     if (isset($this->session->userdata['IDUtilisateur'])){
         $data['title'] = "Créer un evenement";
+        $data['message_display'] = $this->session->flashdata('message_display');
+
         $this->load->view('templates/header', $data);
         //echo $this->session->userdata['IDUtilisateur'];
         $this->load->view('evenements/formulaire_evenement', $data);
@@ -55,8 +57,9 @@ class Evenement extends CI_Controller
 
 }
 
-    public function validation_evenement(){
-    // Check validation for user input in SignUp form
+    public function validation_evenement()
+    {
+        // Check validation for user input in SignUp form
         $this->form_validation->set_rules('nomevents', 'Nom', 'trim|required');
         $this->form_validation->set_rules('urlevents', 'URL', 'trim|required');
         $this->form_validation->set_rules('lieuevents', 'Lieu', 'trim|required');
@@ -84,32 +87,40 @@ class Evenement extends CI_Controller
 
             $result = $this->evenement_model->evenement_insert($data) ;
             if ($result == TRUE) {
-                $data['message_display'] = 'Evènement créé avec succès !';
-                $this->load->view('evenements/design', $data);
+
+                //récupération ID evenement
+                $id = $this->evenement_model->getIDFromURL($data['URLEvenement']);
+
+                //insertion params
+                $this->form_validation->set_rules('passwordmoderation', 'Mot de passe de modération', 'trim|required');
+
+                if ($this->form_validation->run() == FALSE) {
+                    $this->load->view('evenements/formulaire_evenement');
+                } else {
+                    $data2 = array(
+                        'IDEvenement' => $id['IDEvenement'],
+                        'HashtagASuivre' => $this->input->post('hastag'),
+                        'ModerationTexte' => $this->input->post('moderationtxt'),
+                        'ModerationImage' => $this->input->post('moderationimage'),
+                        'PasswordModeration' => $this->input->post('passwordmoderation'),
+                        'FiltreObscenite' => $this->input->post('motinterdit')
+                    );
+                    $resultat = $this->evenement_model->paramevenements_insert($data2) ;
+
+                    //$data['message_display'] = 'Evènement créé avec succès !';
+                    redirect('evenements/design_index');
+                    //$this->load->view('evenements/design', $data);
+
+                }
+
+
             } else {
-                $data['message_display'] = 'L\'url choisie existe déjà';
-                $this->load->view('evenements/formulaire_evenement', $data);
+                $this->session->set_flashdata('message_display', 'L\'url choisie existe déjà');
+                redirect('evenement/creation_evenement');
+                //$this->load->view('evenements/formulaire_evenement', $data);
             }
 
-            //récupération ID evenement
-            $id = $this->evenement_model->getIDFromURL($data['URLEvenement']);
 
-            //insertion params
-            $this->form_validation->set_rules('passwordmoderation', 'Mot de passe de modération', 'trim|required');
-
-            if ($this->form_validation->run() == FALSE) {
-                $this->load->view('evenements/formulaire_evenement');
-            } else {
-                $data2 = array(
-                    'IDEvenement' => $id['IDEvenement'],
-                    'HashtagASuivre' => $this->input->post('hastag'),
-                    'ModerationTexte' => $this->input->post('moderationtxt'),
-                    'ModerationImage' => $this->input->post('moderationimage'),
-                    'PasswordModeration' => $this->input->post('passwordmoderation'),
-                    'FiltreObscenite' => $this->input->post('motinterdit')
-                );
-                $resultat = $this->evenement_model->paramevenements_insert($data2) ;
-            }
         }
     }
 

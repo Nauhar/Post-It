@@ -1,11 +1,19 @@
 <div id="main">
     <div id="login">
         <h2>Formulaire de création d'un évènement</h2>
-        <?php
-        echo "<div class='error_msg'>";
-        echo validation_errors();
-        echo "</div>";
 
+<?php
+        if (isset($message_display)) {
+            echo "<div class='alert alert-danger' role='alert'>";
+            echo "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>";
+            echo "<span class='sr-only'>Error:</span>";
+            echo $message_display;
+            echo "</div>";
+        }
+
+        ?>
+
+        <?php
         echo "</br>";
 
         echo form_open('evenement/validation_evenement');
@@ -14,15 +22,13 @@
         echo "</br></br>";
         echo form_label('Nom de l\'évènement : ');
         echo form_input('nomevents');
-        echo form_label('URL de l\'évènement : ');
-        echo form_input('urlevents');
 
         echo "</br>";
 
-        echo "<div class='error_msg'>";
-        if (isset($message_display)) {
-            echo $message_display;
-        }
+        echo form_label('URL de l\'évènement : ');
+        echo form_input('urlevents');
+
+
         echo "</div>";
 
         echo form_label('Lieu de l\'évènement : ');
