@@ -6,7 +6,7 @@
  * Time: 16:20
  */
 
-echo form_open('Evenement/validation_design');
+echo form_open('Evenement/validation_design/'.$URLEvenement);
 //echo form_label("Choisir un Fond d'écran", "fond_ecran");
 //echo form_input("fond_ecran","");*/
 ?>

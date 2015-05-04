@@ -90,7 +90,8 @@ class Evenement extends CI_Controller
 
                 //récupération ID evenement
                 $id = $this->evenement_model->getIDFromURL($data['URLEvenement']);
-
+                //var_dump($data['URLEvenement']);
+                //var_dump($id);
                 //insertion params
                 $this->form_validation->set_rules('passwordmoderation', 'Mot de passe de modération', 'trim|required');
 
@@ -108,7 +109,7 @@ class Evenement extends CI_Controller
                     $resultat = $this->evenement_model->paramevenements_insert($data2) ;
 
                     //$data['message_display'] = 'Evènement créé avec succès !';
-                    redirect('evenements/design_index');
+                    redirect('evenement/design_index/'.$data['URLEvenement']);
                     //$this->load->view('evenements/design', $data);
 
                 }
@@ -124,43 +125,45 @@ class Evenement extends CI_Controller
         }
     }
 
-    public function design_index()
+    public function design_index($urlevenement)
     {
         $data['title'] = "Design";
+        $data['URLEvenement'] = $urlevenement;
 
         $this->load->view('templates/header', $data);
-        $this->load->view('evenements/Design');
+        $this->load->view('evenements/Design', $data);
         $this->load->view('templates/footer');
     }
 
 
-    public function validation_design(){
+    public function validation_design($urlevenement){
 
-            $data = array(
-                'IDEvenement' => '',
-                'Logo' => $this->input->post('logo_page'),
-                'TexteBandeau' => $this->input->post('text_bandeau'),
-                'CouleurFondBandeau' => $this->input->post('color_fond_bandeau'),
-                'CouleurTexteBandeau' => $this->input->post('color_text_bandeau'),
-                'CouleurFondPage' => $this->input->post('color_page'),
-                'CouleurMessage' => $this->input->post('color_message'),
-                'CouleurPseudo' => $this->input->post('color_pseudo'),
-                'ImageDeFond' => $this->input->post('image_page'),
-                'LogosPartenaires' => $this->input->post('logo_partenaires'),
-                'TaillePoliceMessage' => $this->input->post('size_message'),
-                'TaillePolicePseudo' => $this->input->post('size_pseudo'),
-                'Police' => $this->input->post('police_page'),
-                'AfficherImages' => '1',
-                'DelaiRafraichissement' =>'1'
-            );
+        $id = $this->evenement_model->getIDFromURL($urlevenement);
+        $data = array(
+            'IDEvenement' => $id['IDEvenement'],
+            'Logo' => $this->input->post('logo_page'),
+            'TexteBandeau' => $this->input->post('text_bandeau'),
+            'CouleurFondBandeau' => $this->input->post('color_fond_bandeau'),
+            'CouleurTexteBandeau' => $this->input->post('color_text_bandeau'),
+            'CouleurFondPage' => $this->input->post('color_page'),
+            'CouleurMessage' => $this->input->post('color_message'),
+            'CouleurPseudo' => $this->input->post('color_pseudo'),
+            'ImageDeFond' => $this->input->post('image_page'),
+            'LogosPartenaires' => $this->input->post('logo_partenaires'),
+            'TaillePoliceMessage' => $this->input->post('size_message'),
+            'TaillePolicePseudo' => $this->input->post('size_pseudo'),
+            'Police' => $this->input->post('police_page'),
+            'AfficherImages' => '1',
+            'DelaiRafraichissement' =>'1'
+        );
 
-            $result = $this->db->insert('Designevenement', $data);
-            if ($result == TRUE) {
-                $data['message_display'] = 'Evènement créé avec succès !';
-                $this->load->view('evenements/page_generee', $data);
-            } else {
-                $this->load->view('evenements/Design', $data);
-            }
+        $result = $this->db->insert('Designevenement', $data);
+        if ($result == TRUE) {
+            $data['message_display'] = 'Evènement créé avec succès !';
+            $this->load->view('evenements/page_generee', $data);
+        } else {
+            $this->load->view('evenements/Design', $data);
+        }
 
     }
 }
