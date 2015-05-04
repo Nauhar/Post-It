@@ -145,8 +145,8 @@ public function validation_inscription() {
 
         }
 
-        // Logout from admin page
-        public function logout() {
+        // Retour à la page d'accueil
+        public function retour_accueil() {
 
         // Removing session data
             $sess_array = array(

@@ -44,6 +44,6 @@ if (isset($message_display)) {
     </div>
 
 
-    <a href="logout">Logout</a>
+    <a href="retour_accueil">Retour à la page d'accueil</a>
 
 </div>

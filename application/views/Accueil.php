@@ -1,97 +1,57 @@
-<br> <br> <br> <br> <br> <br>
+<!-- Barre de navigation-->
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">POST IT</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">A propos de POST IT</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/users/login"><span class="glyphicon glyphicon-user"></span> S'identifier</a></li>
+            <li><a href="/index.php/users/inscription"><span class="glyphicon glyphicon-leaf"></span> Créer un compte</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- Block de recherche -->
+<div class="container">
+    <div class="jumbotron" >
+        <h2> Partagez vos émotions </h2>
+        <p>POST IT est un .....</p>
+
+        <?php
+        echo "<div class='error_msg'>";
+        if (isset($error_message)) {
+            echo $error_message;
+        }
+        echo validation_errors();
+        echo "</div>";
+        ?>
+
+       <?php
+
+        echo form_open('accueil/recherche_evenement');
+        echo form_open('accueil/recherche_evenement');
+        echo form_label("Rechercher un événement : ", "recherche_livewall");
+        echo form_input('recherche_livewall','');
+        ?>
 
 
-<!--<title>Page d'Accueil</title>
-<div class="span12 pagination-centered">
+        <?php
 
-    <a href="/index.php/users/login">S'identifier</a>
+        echo form_submit('submit', 'Submit');
+        echo form_close();
+        ?>
 
-</div>
 
-</br>
-
-<div class="span7 text-center">
-    <div class="row vertical-center-row">
-<a href="/index.php/users/validation_inscription">Créer un compte</a>
+       <!-- <input type='text' name='evenement' >
+        <a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span> Rechercher un évènement</a> -->
     </div>
 </div>
 
 </br>
--->
-
-<?php
-echo "<div class='error_msg'>";
-if (isset($error_message)) {
-    echo $error_message;
-}
-echo validation_errors();
-echo "</div>";
-?>
-
-
-<div class=container-fluid>
-    <span class="col-lg-6 identifier btn btn-lg btn-primary glyphicon glyphicon-user ">
-       <a href="/index.php/users/login">S'identifier</a>
-    </span>
-    <span class="col-lg-6 creation btn btn-lg btn-primary glyphicon glyphicon-leaf">
-     <a href="/index.php/users/inscription">Créer un compte</a>
-    </span>
-</div>
-<?php
-
-echo form_open('accueil/recherche_evenement');
-echo form_open('accueil/recherche_evenement');
-echo form_label("Rechercher un événement", "recherche_livewall");
-echo form_input('recherche_livewall','');
-?>
-
-
-
-<?php
-
-echo form_submit('submit', 'Submit');
-echo form_close();
-?>
-
-</br>
-
-</body>
-</html>
-<!--
-//////////////////
-<title>Page d'Accueil</title>
-
-<br> <br> <br> <br> <br> <br>
-
-<div class=container-fluid>
-    <span class="col-lg-6 identifier btn btn-lg btn-primary glyphicon glyphicon-user ">
-       <a href="/users/login">S'identifier</a>
-    </span>
-    <span class="col-lg-6 creation btn btn-lg btn-primary glyphicon glyphicon-leaf">
-     <a href="/users/validation_inscription">Créer un compte</a>
-    </span>
-</div>
-
-<?php
-
-/*echo "<div class='col-lg-11 rechercher'>";
-echo form_open("accueil/recherche_evenement");
- echo form_label("Rechercher le livewall d'un événement : ", "recherche_livewall");
-echo form_input("recherche_livewall","");
-?>
-
-
-
-<?php
-
-
-echo form_submit("submit", "Submit");
-echo "</a>";
-echo form_close();
- echo "</div>";
- echo "<br><br><br><br><br>";*/
-?>
-
 
 
 </body>
