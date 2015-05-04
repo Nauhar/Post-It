@@ -160,7 +160,8 @@ class Evenement extends CI_Controller
         $result = $this->db->insert('Designevenement', $data);
         if ($result == TRUE) {
             $data['message_display'] = 'Evènement créé avec succès !';
-            $this->load->view('evenements/page_generee', $data);
+            redirect('evenement/index');
+            //$this->load->view('evenements/liste_evenements', $data);
         } else {
             $this->load->view('evenements/Design', $data);
         }

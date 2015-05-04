@@ -16,6 +16,8 @@ echo "</br>";
             <?php echo "<div class='col-lg-1'>".$evenement['DateEvenement']."</div>"?>
             <?php echo "<div class='col-lg-1'><a href='/index.php/messages/index/$evenement[URLEvenement]'>"."Livewall"."</a></div>"?>
             <?php echo "<div class='col-lg-1'><a href='/index.php/messages/moderation_msg/$evenement[URLEvenement]'>"."Modération"."</a></div>"?>
+            <?php echo "<div class='col-lg-1'><button class='btn btn-sm btn-danger' type='button'>"."Supprimer"."</button></div>"?>
+            </br></br>
     </div>
     <?php endforeach ?>
     </div>
