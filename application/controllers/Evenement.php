@@ -107,8 +107,48 @@ class Evenement extends CI_Controller
                     'FiltreObscenite' => $this->input->post('motinterdit')
                 );
                 $resultat = $this->evenement_model->paramevenements_insert($data2) ;
-                            }
+            }
         }
+    }
+
+    public function design_index()
+    {
+        $data['title'] = "Design";
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('evenements/Design');
+        $this->load->view('templates/footer');
+    }
+
+
+    public function validation_design(){
+
+            $data = array(
+                'IDEvenement' => '',
+                'Logo' => $this->input->post('logo_page'),
+                'TexteBandeau' => $this->input->post('text_bandeau'),
+                'CouleurFondBandeau' => $this->input->post('color_fond_bandeau'),
+                'CouleurTexteBandeau' => $this->input->post('color_text_bandeau'),
+                'CouleurFondPage' => $this->input->post('color_page'),
+                'CouleurMessage' => $this->input->post('color_message'),
+                'CouleurPseudo' => $this->input->post('color_pseudo'),
+                'ImageDeFond' => $this->input->post('image_page'),
+                'LogosPartenaires' => $this->input->post('logo_partenaires'),
+                'TaillePoliceMessage' => $this->input->post('size_message'),
+                'TaillePolicePseudo' => $this->input->post('size_pseudo'),
+                'Police' => $this->input->post('police_page'),
+                'AfficherImages' => '1',
+                'DelaiRafraichissement' =>'1'
+            );
+
+            $result = $this->db->insert('Designevenement', $data);
+            if ($result == TRUE) {
+                $data['message_display'] = 'Evènement créé avec succès !';
+                $this->load->view('evenements/page_generee', $data);
+            } else {
+                $this->load->view('evenements/Design', $data);
+            }
+
     }
 }
 
