@@ -154,7 +154,7 @@ class Evenement extends CI_Controller
             'TaillePolicePseudo' => $this->input->post('size_pseudo'),
             'Police' => $this->input->post('police_page'),
             'AfficherImages' => '1',
-            'DelaiRafraichissement' =>'1'
+            'DelaiRafraichissement' =>'6'
         );
 
         $result = $this->db->insert('Designevenement', $data);
