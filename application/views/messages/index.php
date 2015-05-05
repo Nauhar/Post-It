@@ -29,14 +29,14 @@
 </br>
 </br>
 </br>
+<div class="en_tete">
+    <div class="col-lg-3 logo"> LOGO </div>
+    <div class="col-lg-9 info_bandeau"> SEnd Msg to #gala </div>
+</div>
 
+<?php var_dump($design); ?>
 
-
-<div class="container1">
-    <div class="en_tete">
-        <div class="col-lg-3 logo"> LOGO </div>
-        <div class="col-lg-9 info_bandeau"> SEnd Msg to #gala </div>
-    </div>
+<div class="container1" style="font: <?php echo $design['Police'] ?>" >
 
     <div class="row">
         <div class="col-lg-3" id="M0">M0</div>
@@ -51,11 +51,9 @@
         <div class="col-lg-3" id="M7">M7</div>
     </div>
 
-    <div class="partenaires"> PARTENAIRES</div>
-
 </div>
 
-
+<div class="partenaires"> PARTENAIRES</div>
 
 <?php  /*var_dump($_SERVER['PATH_INFO']);
 $x = explode("/", $_SERVER['PATH_INFO']);

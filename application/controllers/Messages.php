@@ -12,6 +12,7 @@ class Messages extends CI_Controller
     {
         parent::__construct();
         $this->load->model('messages_model');
+        $this->load->model('design_model');
 
         // Load session library
         $this->load->library('session');
@@ -25,6 +26,7 @@ class Messages extends CI_Controller
     public function index($urlevenement)
     {
         $data['Messages'] = $this->messages_model->getDerniersMessages($urlevenement);
+        $data['design'] = $this->design_model->getArguments($urlevenement);
         $data['URLEvenement'] = $urlevenement;
         $data['title'] = "Liste des messages a afficher";
 
