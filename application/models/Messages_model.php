@@ -22,6 +22,7 @@ class Messages_model extends CI_Model
         $this->db->select('Auteur, Message, URLPhoto');
         $this->db->from('Messages');
         $this->db->join('Evenements', 'Evenements.IDEvenement = Messages.IDEvenement');
+        $this->db->where('MessageModere', TRUE);
         $this->db->where('ValidationMessage', TRUE);
         $this->db->where('URLEvenement', $urlevenement);
         $this->db->limit(8);
@@ -49,6 +50,7 @@ class Messages_model extends CI_Model
             'Auteur' => $nom,
             'Message' => $message,
             'URLPhoto' => '',
+            'MessageModere' => 'FALSE',
             'ValidationMessage' => 'FALSE',
             'IDEvenement' => $idevenement
         );
@@ -60,7 +62,7 @@ class Messages_model extends CI_Model
     {
         $this->db->select('IDMessage, Auteur, Message, URLPhoto, DateMessage');
         $this->db->where('IDEvenement', $idevenement);
-        $this->db->where('ValidationMessage', 0);
+        $this->db->where('MessageModere', 0);
         $this->db->order_by('DateMessage', 'ASC');
 
         $query = $this->db->get('Messages');
@@ -97,27 +99,27 @@ class Messages_model extends CI_Model
 
     public function postTweet($idevenement, $nom, $message, $photo, $idtweet)
     {
-
+        //On vérifie si le tweet est déjà en BDD
         $this->db->select('*');
         $this->db->from('Messages');
-        $this->db->where('IDMessage', intval($idtweet));
+        $this->db->where('IDTwitter', intval($idtweet));
         $this->db->limit(1);
 
         $query = $this->db->get();
 
-
+        //Si il n'existe pas, on l'ajoute
         if ($query->num_rows() == 0) {
-            // Query to insert data in database
+
             $data = array(
-                'IDMessage' => intval($idtweet),
+                'IDMessage' => '',
                 'Auteur' => $nom,
                 'Message' => $message,
                 'URLPhoto' => $photo,
+                'MessageModere' => 'FALSE',
                 'ValidationMessage' => 'FALSE',
-                'IDEvenement' => $idevenement
+                'IDEvenement' => $idevenement,
+                'IDTwitter' => intval($idtweet)
             );
-
-            echo "data['IDMessage'] : ".$data['IDMessage'];
 
             $this->db->insert('Messages', $data);
         }
@@ -126,7 +128,15 @@ class Messages_model extends CI_Model
     public function validemessage($id)
     {
 
+        $this->db->set('MessageModere', 1);
         $this->db->set('ValidationMessage', 1);
+        $this->db->where('IDMessage', $id);
+        $this->db->update('Messages');
+    }
+
+    public function refusemessage($id)
+    {
+        $this->db->set('MessageModere', 1);
         $this->db->where('IDMessage', $id);
         $this->db->update('Messages');
     }

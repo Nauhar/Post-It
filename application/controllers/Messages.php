@@ -115,4 +115,8 @@ class Messages extends CI_Controller
     public function validermessage($id){
         $this->messages_model->validemessage($id);
     }
+
+    public function refusermessage($id){
+        $this->messages_model->refusemessage($id);
+    }
 }

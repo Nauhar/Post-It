@@ -11,8 +11,12 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/users/login"><span class="glyphicon glyphicon-user"></span> S'identifier</a></li>
+                <?php if (isset($this->session->userdata['logged_in'])) { ?>
+                <li><a href ="/index.php/users/logout"><span class ="glyphicon glyphicon-log-out"</span> Déconnexion</a></li>
+                <?php }else{?>
+                <li><a href="/index.php/users/login"><span class="glyphicon glyphicon-log-in"></span> S'identifier</a></li>
                 <li><a href="/index.php/users/inscription"><span class="glyphicon glyphicon-leaf"></span> Créer un compte</a></li>
+                <?php }?>
             </ul>
       <!--  </div> -->
     </nav>
