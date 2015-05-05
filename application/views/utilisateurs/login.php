@@ -56,7 +56,4 @@ if (isset($message_display)) {
 </div>
     </div>
 
-
-    <a href="retour_accueil">Retour à la page d'accueil</a>
-
 </div>

@@ -39,9 +39,7 @@
     function valider(id) {
 
         var validermessage = 'http://localhost:8888/index.php/messages/validermessage/'+id;
-        alert(validermessage);
 
-        console.log(id);
         $.post(validermessage, {p: id}, function(data) {
            $("#post-" + id).slideUp();
         });
@@ -50,9 +48,7 @@
     function refuser(id) {
 
         var refusermessage = 'http://localhost:8888/index.php/messages/refusermessage/'+id;
-        alert(refusermessage);
 
-        console.log(id);
         $.post(refusermessage, {p: id}, function(data) {
             $("#post-" + id).slideUp();
         });

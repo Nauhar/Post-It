@@ -26,9 +26,10 @@ class Evenement extends CI_Controller
             //requete permettant de récuperer les evenements de l'utilisateur
             $data['evenements'] = $this->evenement_model->getEvenementUtilisateur($this->session->userdata['IDUtilisateur']);
 
+
             //affichage
             $this->load->view('templates/header', $data);
-            //echo $this->session->userdata['IDUtilisateur'];
+            $this->load->view('templates/navigation');
             $this->load->view('evenements/liste_evenements', $data);
             $this->load->view('templates/footer');
         }
@@ -93,7 +94,7 @@ class Evenement extends CI_Controller
                 //var_dump($data['URLEvenement']);
                 //var_dump($id);
                 //insertion params
-                $this->form_validation->set_rules('passwordmoderation', 'Mot de passe de modération', 'trim|required');
+                $this->form_validation->set_rules('passwordmoderation', 'Mot de passe de modération', 'trim');
 
                 if ($this->form_validation->run() == FALSE) {
                     $this->load->view('evenements/formulaire_evenement');
@@ -106,6 +107,8 @@ class Evenement extends CI_Controller
                         'PasswordModeration' => $this->input->post('passwordmoderation'),
                         'FiltreObscenite' => $this->input->post('motinterdit')
                     );
+                    if ($data2['ModerationTexte'] == null)
+                        $data2['ModerationTexte'] = false;
                     $resultat = $this->evenement_model->paramevenements_insert($data2) ;
 
                     //$data['message_display'] = 'Evènement créé avec succès !';
@@ -166,6 +169,12 @@ class Evenement extends CI_Controller
             $this->load->view('evenements/Design', $data);
         }
 
+    }
+
+    public function supprimer($idevenement)
+    {
+        $tmp = $this->evenement_model->supprimer_evenement($idevenement);
+        return $tmp;
     }
 }
 

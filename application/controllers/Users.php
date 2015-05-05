@@ -35,7 +35,8 @@ class Users extends CI_Controller {
 
         public function login()
         {
-                $data['message_display'] = $this->session->flashdata('message_display');
+            $data['message_display'] = $this->session->flashdata('message_display');
+            $this->load->view('templates/navigation');
             $this->load->view('utilisateurs/login', $data);
         }
 

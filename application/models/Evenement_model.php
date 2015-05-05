@@ -12,6 +12,7 @@ class Evenement_model extends CI_Model
 
             $this->db->select('*');
             $this->db->from('Evenements');
+            $this->db->join('ParametresEvenement', 'Evenements.IDEvenement = ParametresEvenement.IDEvenement');
             $this->db->where('IDUtilisateur', $iduser);
             $this->db->order_by('DateEvenement', 'DESC');
 
@@ -55,5 +56,21 @@ class Evenement_model extends CI_Model
 
         return $query->row_array();
     }
+
+    public function supprimer_evenement($idevenement)
+    {
+        $this->db->delete('DesignEvenement', array('IDEvenement' => $idevenement));
+        $this->db->delete('ParametresEvenement', array('IDEvenement' => $idevenement));
+
+        $tmp = $this->db->delete('Evenements', array('IDEvenement' => $idevenement));
+        //echo $tmp;
+        //var_dump($tmp);
+        if ($tmp !== null) {
+            echo true;
+        }else{
+            echo false;
+        }
+    }
+
 
 }

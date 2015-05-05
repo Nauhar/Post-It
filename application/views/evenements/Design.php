@@ -125,7 +125,7 @@ echo form_open('Evenement/validation_design/'.$URLEvenement);
 
 <br>
 <?php
-echo form_submit('submit', 'Validation');
+echo form_submit('submit', 'Validation','class="btn btn-default"');
 echo form_close();
 ?>
 
