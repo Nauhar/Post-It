@@ -60,7 +60,6 @@ class Messages extends CI_Controller
             //On insère le message
             $this->messages_model->postMessage($IDEvenement['IDEvenement'], $this->input->post('nom'), $this->input->post('message'));
 
-
         }
 
         $this->load->view('templates/header', $data);
@@ -69,9 +68,9 @@ class Messages extends CI_Controller
     }
 
     public function getMessages($urlevenement){
-        $all = $this->messages_model->getDerniersMessages($urlevenement);
-        echo json_encode($all);
-    }
+    $all = $this->messages_model->getDerniersMessages($urlevenement);
+    echo json_encode($all);
+}
 
     public function twitter($urlevenement){
 
@@ -93,12 +92,9 @@ class Messages extends CI_Controller
                 } else {
                     $photo = '';
                 }
-
                 $this->messages_model->postTweet($IDevent['IDEvenement'], $nom, $message, $photo, $idTweet);
             }
-
         }
-
     }
 
     public function moderation_msg($urlevenement){

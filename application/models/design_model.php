@@ -2,36 +2,31 @@
 /**
  * Created by IntelliJ IDEA.
  * User: Xavier
- * Date: 24/04/2015
- * Time: 11:21
+ * Date: 05/05/2015
+ * Time: 15:53
  */
-<?php
-
-class Design_model extends CI_Model
+public function getArguments($urlevenement)
 {
-    public function __construct()
-    {
-        $this->load->database();
-    }
 
-    // Insérer l'évenement dans la table évènement
-    public function design_insert($data) {
+    $this->db->select('*');
+    $this->db->from('designevenements');
+    $this->db->join('Evenements', 'Evenements.IDEvenement = Messages.IDEvenement');
+    $this->db->where('ValidationMessage', TRUE);
+    $this->db->where('URLEvenement', $urlevenement);
+    $this->db->limit(8);
+    $this->db->order_by('DateMessage', 'DESC');
 
-        // On vérifie que l'url choisie n'existe pas dans la base de données
-        $condition = "URLEvenement =" . "'" . $data['URLEvenement'] . "'";
-        $this->db->select('*');
-        $this->db->from('Evenements');
-        $this->db->where($condition);
-        $this->db->limit(1);
-        $query = $this->db->get();
-        if ($query->num_rows() == 0) {
-            // Query to insert data in database
-            $this->db->insert('Evenements', $data);
-            if ($this->db->affected_rows() > 0) {
-                return true;
-            }
-        } else {
-            return false;
-        }
-    }
+    $query = $this->db->get();
+
+
+    return $query->result_array();
+}
+
+public function getIDFromURL($urlevenement)
+{
+    $this->db->select('IDEvenement');
+    $this->db->where('URLEvenement', $urlevenement);
+    $query = $this->db->get('Evenements');
+
+    return $query->row_array();
 }

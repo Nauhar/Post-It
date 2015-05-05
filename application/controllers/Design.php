@@ -26,19 +26,6 @@ class Design extends CI_Controller
 
     }
 
-    /**
-     * Fonction de base du controller
-     *
-     *
-     */
-    public function design_index()
-    {
-        $data['title'] = "Design";
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('evenements/Design');
-        $this->load->view('templates/footer');
-    }
 
 
     public function validation_design(){

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/assets/css/bootstrap.css" >
+<link rel="stylesheet" href="/assets/css/postIT_css.css" >
 
 <h2><?php echo $title ?></h2>
 
@@ -28,20 +30,31 @@
 </br>
 </br>
 
-<div class="container-fluid">
+
+
+<div class="container1">
+    <div class="en_tete">
+        <div class="col-lg-3 logo"> LOGO </div>
+        <div class="col-lg-9 info_bandeau"> SEnd Msg to #gala </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-3" id="M0">M0</div>
         <div class="col-lg-3" id="M1">M1</div>
         <div class="col-lg-3" id="M2">M2</div>
         <div class="col-lg-3" id="M3">M3</div>
     </div>
-    <div class="row">
+    <div class="row ligne2">
         <div class="col-lg-3" id="M4">M4</div>
         <div class="col-lg-3" id="M5">M5</div>
         <div class="col-lg-3" id="M6">M6</div>
         <div class="col-lg-3" id="M7">M7</div>
     </div>
+
+    <div class="partenaires"> PARTENAIRES</div>
+
 </div>
+
 
 
 <?php  /*var_dump($_SERVER['PATH_INFO']);

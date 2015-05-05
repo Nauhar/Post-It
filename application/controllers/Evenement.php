@@ -117,21 +117,22 @@ class Evenement extends CI_Controller
 
                 }
 
-
             } else {
                 $this->session->set_flashdata('message_display', 'L\'url choisie existe déjà');
                 redirect('evenement/creation_evenement');
                 //$this->load->view('evenements/formulaire_evenement', $data);
             }
 
-
         }
     }
 
     public function design_index($urlevenement)
     {
-        $data['title'] = "Design";
+        $id = $this->evenement_model->getIDFromURL($urlevenement);
+        //$data['Design'] = $this->design_model->getArguments($id);
         $data['URLEvenement'] = $urlevenement;
+
+        $data['title'] = "Design";
 
         $this->load->view('templates/header', $data);
         $this->load->view('evenements/Design', $data);

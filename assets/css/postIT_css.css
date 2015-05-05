@@ -9,10 +9,10 @@ and open the template in the editor.
 */
 
 .container-fluid {
-  padding-right: 20px;
+ padding-right: 20px;
   padding-left: 20px; 
- // background-color: white;
-   margin-top : 100px;
+   /*background-color: ;    */
+margin-top : 100px;
  
 }
 
@@ -32,12 +32,52 @@ background-color:  ;
 
 body{
 color:black;
-background-image:radial-gradient(white, grey);
-} 
+  font-family: italic;      /* Police générale*/
+}
 
+.en_tete{
+   background-color: black;
+}
+
+.partenaires{
+    background-color: black;
+    background-image:url("");   /* logos partenaires*/
+}
+
+.logo{
+    background-color: blue;
+    background-image:url("");     /* logo evenement */
+}
+
+.info_bandeau{
+    background-color: greenyellow;
+}
+
+.ligne1{
+    background-color: #808080;
+}
+
+.pseudo {  /*propriétés du pseudo*/
+    font-size: large;
+    font-color: green;
+}
+
+.info_bandeau{      /* propriétés du texte du bandeau*/
+   font-family: Arial;
+    font-color: black;
+}
+
+.row{
+      background-color: #808080;
+}
+.ligne2 {
+    background-color: darkslategrey;
+}
 .container1{
   padding-right: 20px;
-  padding-left: 20px; 
+  padding-left: 20px;
+    background-color: darkslategrey;    /* couleur de fond page*/
+     background-image:url(""); /* image de fond page*/
  
 }
 
@@ -45,6 +85,7 @@ background-image:radial-gradient(white, grey);
   width: 100%;
   background-color: white;
   margin-bottom : 10px;
+    padding-left: 20px;
 }
 
 .identifier{
@@ -72,12 +113,13 @@ background-image:radial-gradient(white, grey);
 [class*="col-"] {
     display : inline; 
   /*background-color: black;*/
+      padding-left: 50px;
   line-height: 30px;
   /*max-width:275px;*/
   text-align: center;
-   border-radius: 5px 5px 5px 5px;
-   border-left: outset;
-     border-right: outset;
+   /*border-radius: 5px 5px 5px 5px;     */
+   /*border-left: outset;
+     border-right: outset;    */
    margin-bottom : 10px;
    /*width: 100%;*/
    word-wrap:break-word; /* adapte le contenu text à la div */
