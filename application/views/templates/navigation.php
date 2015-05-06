@@ -8,6 +8,9 @@
 
             <ul class="nav navbar-nav">
                 <li><a href="#">A propos de POST IT</a></li>
+                <?php if (isset($this->session->userdata['logged_in'])) { ?>
+                    <li><a href ="/index.php/evenement/index">Vos évènements</a></li>
+                <?php }?>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
