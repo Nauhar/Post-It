@@ -6,10 +6,7 @@
                 <a class="navbar-brand" href="/index.php/accueil/index">POST IT</a>
             </div>
 
-            <ul class="nav navbar-nav">
-                <li><a href="#">A propos de POST IT</a></li>
-            </ul>
-
+            
             <ul class="nav navbar-nav navbar-right">
                 <?php if (isset($this->session->userdata['logged_in'])) { ?>
                 <li><p class="navbar-text" style="margin: 0px"><?php echo $this->session->userdata['NomUtilisateur']." ".$this->session->userdata['PrenomUtilisateur'];?></p><a href ="/index.php/users/logout"><span class ="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>
