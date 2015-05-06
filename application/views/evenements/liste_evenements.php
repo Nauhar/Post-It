@@ -8,26 +8,54 @@ echo "</br>";
     <div class="container-fluid" style='margin-left: 10px;'>
             <?php $i = 0 ?>
 
-    <?php foreach ($evenements as $evenement):
-        echo "<div id='post-".$evenement['IDEvenement']."' class='row'>";
-        echo "<div class='col-lg-3'>".$evenement['NomEvenement']."</div>";
-        echo "<div class='col-lg-2'>".$evenement['Lieu']."</div>";
-        echo "<div class='col-lg-2'>".$evenement['VilleEvenement']."</div>";
-        echo "<div class='col-lg-1'>".$evenement['DateEvenement']."</div>";
-        echo "<div class='col-lg-1'><a href='/index.php/messages/index/$evenement[URLEvenement]'>"."Livewall"."</a></div>";?>
-
-        <div class='col-lg-1'>
-        <?php if ($evenement['ModerationTexte'] == true){
-            echo "<a href='/index.php/messages/moderation_msg/$evenement[URLEvenement]'><span class='glyphicon glyphicon-check'></span>Modération</a>";
-         } ?>
-        </div>
-        <a href="#" onclick="supprimer(<?php echo $evenement['IDEvenement']; ?>)" class="btn btn-danger">Supprimer</a>
 
 
-        </br></br>
-    </div>
-    <?php endforeach ?>
-    </div>
+
+
+        <table class="table table-striped">
+
+        <!-- On rows -->
+            <tr>
+                <td><b>Nom de l'évènement</b></td>
+                <td><b>Lieu de l'évènement</b></td>
+                <td><b>Ville de l'évènement</b></td>
+                <td><b>Date de l'évènement</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        <?php foreach ($evenements as $evenement): ?>
+            <tr>
+                <?php echo "<div id='post-".$evenement['IDEvenement']."' class='row'>"?>
+                <td><?php echo $evenement['NomEvenement']?></td>
+                <td><?php echo $evenement['Lieu']?></td>
+                <td><?php echo $evenement['VilleEvenement']?></td>
+                <td><?php echo $evenement['DateEvenement']?></td>
+                <td><?php echo "<a href='/index.php/messages/index/$evenement[URLEvenement]'>"."Livewall"."</a>"?></td>
+                <td>
+                    <?php if ($evenement['ModerationTexte'] == true){
+                        echo "<a href='/index.php/messages/moderation_msg/$evenement[URLEvenement]'><span class='glyphicon glyphicon-check'></span>Modération</a>";
+                    }
+                    ?>
+                </td>
+                <td><a href="#" onclick="supprimer(<?php echo $evenement['IDEvenement']; ?>)" class="btn btn-danger">Supprimer</a></td>
+                </div>
+            </tr>
+        <?php endforeach ?>
+
+        </table>
+
+
+</div>
 
 <a href="/index.php/evenement/creation_evenement" type="button" class="btn btn-default">Créer un évènement</a>
 </br>

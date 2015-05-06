@@ -118,7 +118,8 @@
 <script type="text/javascript">
 
     $('#sandbox-container .input-group.date').datepicker({
-        format: "mm/dd/yyyy",
+       // format: "mm/dd/yyyy",
+        format: "yyyy-mm-dd",
         startDate: new Date(),
         language: "fr",
         autoclose: true,

@@ -42,7 +42,7 @@ class Users extends CI_Controller {
 
         public function inscription()
         {
-
+            $this->load->view('templates/navigation');
             if (isset($this->session->userdata['logged_in'])){
 
                 $this->session->set_flashdata('error_message', 'Vous êtes déjà connecté');

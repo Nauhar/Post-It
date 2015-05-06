@@ -102,8 +102,9 @@
 <script  type="text/javascript">
 
     $('#sandbox-container .input-group.date').datepicker({
-        format: "mm/dd/yyyy",
+        format: "yyyy-mm-dd",
         startDate: "01/01/1900",
+        endDate:new Date(),
         language: "fr",
         autoclose: true,
         todayHighlight: true
