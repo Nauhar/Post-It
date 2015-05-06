@@ -61,10 +61,10 @@ class Evenement_model extends CI_Model
     {
         $this->db->delete('DesignEvenement', array('IDEvenement' => $idevenement));
         $this->db->delete('ParametresEvenement', array('IDEvenement' => $idevenement));
+        $this->db->delete('Messages', array('IDEvenement' => $idevenement));
 
         $tmp = $this->db->delete('Evenements', array('IDEvenement' => $idevenement));
-        //echo $tmp;
-        //var_dump($tmp);
+
         if ($tmp !== null) {
             echo true;
         }else{

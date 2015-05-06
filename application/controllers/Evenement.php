@@ -54,6 +54,10 @@ class Evenement extends CI_Controller
         redirect('users/login');
     }
 
+
+    //Si le formulaire a été validé
+    // if($this->input->post('submit')) {
+
 }
 
     public function validation_evenement()

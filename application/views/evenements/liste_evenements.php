@@ -40,16 +40,10 @@ echo "</br>";
     function supprimer(id) {
 
         var supprimer = 'http://localhost:8888/index.php/evenement/supprimer/'+id;
-        alert(supprimer);
 
-        console.log(id);
         $.post(supprimer, {p: id}, function(data) {
-            alert(data);
            if (data == true) {
-               alert("evenement supprimé");
                $("#post-" + id).slideUp();
-           }else{
-               alert("evenement non supprimé");
            }
 
         });
