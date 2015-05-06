@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/assets/css/bootstrap.css" >
-<link rel="stylesheet" href="/assets/css/postIT_css.css" >
+<!--<link rel="stylesheet" href="/assets/css/postIT_css.css" >-->
 
 <h2><?php echo $title ?></h2>
 
@@ -29,22 +29,24 @@
 </br>
 </br>
 </br>
-<div class="en_tete">
-    <div class="col-lg-3 logo"> LOGO </div>
-    <div class="col-lg-9 info_bandeau"> SEnd Msg to #gala </div>
+<div class="row" style="background-color: <?php echo $design['CouleurFondBandeau']  ?>">
+    <div class="col-lg-3" style="background-image: <?php echo $design['Logo'] ?>"> LOGO </div>
+    <div class="col-lg-9" style="color: <?php echo $design['CouleurTexteBandeau'] ?>" style="background-color: #0086b3"> <?php echo $design["TexteBandeau"] ?> </div>
 </div>
 
-<?php var_dump($design); ?>
+<?php //var_dump($design); ?>
 
-<div class="container1" style="font: <?php echo $design['Police'] ?>" >
+<!--creer une div de la taille de la fenetre, et attribuer CouleurFondPage à cette div -->
 
-    <div class="row">
+<div class="container-fluid" style="font: <?php echo $design['Police'] ?>" >
+
+        <div class="row" style="color: <?php echo $design['CouleurMessage'] ?>" style="font-size: <?php echo $design['TaillePoliceMessage'] ?>">
         <div class="col-lg-3" id="M0">M0</div>
         <div class="col-lg-3" id="M1">M1</div>
         <div class="col-lg-3" id="M2">M2</div>
         <div class="col-lg-3" id="M3">M3</div>
     </div>
-    <div class="row ligne2">
+    <div class="row " style="color: <?php echo $design['CouleurMessage'] ?>">
         <div class="col-lg-3" id="M4">M4</div>
         <div class="col-lg-3" id="M5">M5</div>
         <div class="col-lg-3" id="M6">M6</div>
@@ -53,7 +55,7 @@
 
 </div>
 
-<div class="partenaires"> PARTENAIRES</div>
+<div class="container-fluid" style="background-color:#EBF300" >PARTENAIRES</div>
 
 <?php  /*var_dump($_SERVER['PATH_INFO']);
 $x = explode("/", $_SERVER['PATH_INFO']);
