@@ -105,14 +105,29 @@ class Messages extends CI_Controller
     }
 
     public function moderation_msg($urlevenement){
-        //requete permettant de récuperer les messages liés à un evenement
-        $id = $this->messages_model->getIDFromURL($urlevenement);
-        $msg['moderationmessages'] = $this->messages_model->messagesAModérer($id['IDEvenement']);
-        $msg['url'] = $urlevenement;
+        if (isset($this->session->userdata['IDUtilisateur']) == false){
+            $this->session->set_flashdata('error_message', 'Vous devez être connecté pour faire ceci');
+            redirect('accueil/index');
+        }
 
-        $this->load->view('templates/header');
-        $this->load->view('messages/moderation',$msg);
-        $this->load->view('templates/footer');
+        $this->load->model('evenement_model');
+        if($this->evenement_model->userIsOwner($urlevenement) == 0){
+            //Demander MDP modération, vérifiez si ok et blabla
+
+
+
+        }else {
+
+            //requete permettant de récuperer les messages liés à un evenement
+            $id = $this->messages_model->getIDFromURL($urlevenement);
+            $msg['moderationmessages'] = $this->messages_model->messagesAModérer($id['IDEvenement']);
+            $msg['url'] = $urlevenement;
+
+            $this->load->view('templates/header');
+            $this->load->view('templates/navigation');
+            $this->load->view('messages/moderation', $msg);
+            $this->load->view('templates/footer');
+        }
     }
 
     public function validermessage($id){

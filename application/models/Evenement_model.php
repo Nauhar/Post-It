@@ -82,5 +82,16 @@ class Evenement_model extends CI_Model
         return $query->row_array();
     }
 
+    public function userIsOwner($urlevenement)
+    {
+        $this->db->select('*');
+        $this->db->from('Evenements');
+        $this->db->where('URLEvenement', $urlevenement);
+        $this->db->where('IDUtilisateur', $this->session->userdata['IDUtilisateur']);
+
+        $query = $this->db->count_all_results();
+        return $query;
+    }
+
 
 }
