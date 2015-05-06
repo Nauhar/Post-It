@@ -61,7 +61,6 @@ class Users extends CI_Controller {
 
                 if ($this->form_validation->run() == TRUE) {
 
-                    //redirect('/users/inscription');
                     $data = array(
                         'IDUtilisateur' => '',
                         'NomUtilisateur' => $this->input->post('nom'),

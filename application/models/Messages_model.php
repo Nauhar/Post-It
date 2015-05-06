@@ -18,12 +18,16 @@ class Messages_model extends CI_Model
 
     public function getDerniersMessages($urlevenement)
     {
+        $this->load->model('evenement_model');
+        $params = $this->evenement_model->getEventParams($urlevenement);
 
         $this->db->select('Auteur, Message, URLPhoto');
         $this->db->from('Messages');
         $this->db->join('Evenements', 'Evenements.IDEvenement = Messages.IDEvenement');
-        $this->db->where('MessageModere', TRUE);
-        $this->db->where('ValidationMessage', TRUE);
+        if ($params['ModerationTexte'] == true){
+            $this->db->where('MessageModere', TRUE);
+            $this->db->where('ValidationMessage', TRUE);
+        }
         $this->db->where('URLEvenement', $urlevenement);
         $this->db->limit(8);
         $this->db->order_by('DateMessage', 'DESC');
@@ -97,7 +101,7 @@ class Messages_model extends CI_Model
         return $query->row_array();
     }
 
-    public function postTweet($idevenement, $nom, $message, $photo, $idtweet)
+    public function postTweet($idevenement, $nom, $message, $photo, $idtweet, $urlevenement)
     {
         //On vérifie si le tweet est déjà en BDD
         $this->db->select('*');
@@ -110,16 +114,16 @@ class Messages_model extends CI_Model
         //Si il n'existe pas, on l'ajoute
         if ($query->num_rows() == 0) {
 
-            $data = array(
-                'IDMessage' => '',
-                'Auteur' => $nom,
-                'Message' => $message,
-                'URLPhoto' => $photo,
-                'MessageModere' => 'FALSE',
-                'ValidationMessage' => 'FALSE',
-                'IDEvenement' => $idevenement,
-                'IDTwitter' => intval($idtweet)
-            );
+                $data = array(
+                    'IDMessage' => '',
+                    'Auteur' => $nom,
+                    'Message' => $message,
+                    'URLPhoto' => $photo,
+                    'MessageModere' => 'FALSE',
+                    'ValidationMessage' => 'FALSE',
+                    'IDEvenement' => $idevenement,
+                    'IDTwitter' => intval($idtweet)
+                );
 
             $this->db->insert('Messages', $data);
         }

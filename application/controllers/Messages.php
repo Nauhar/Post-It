@@ -99,7 +99,7 @@ class Messages extends CI_Controller
                 } else {
                     $photo = '';
                 }
-                $this->messages_model->postTweet($IDevent['IDEvenement'], $nom, $message, $photo, $idTweet);
+                $this->messages_model->postTweet($IDevent['IDEvenement'], $nom, $message, $photo, $idTweet, $urlevenement);
             }
         }
     }
