@@ -25,11 +25,8 @@
         <a href="#" onclick="valider(<?php echo $moderationmessage['IDMessage']; ?>)" class="btn btn-success">Approuver</a>
 
         <a href="#" onclick="refuser(<?php echo $moderationmessage['IDMessage']; ?>)" class="btn btn-danger">Refuser</a>
-        <?php
-
-    endforeach;
-
-?>
+        </div>
+    <?php endforeach ?>
 
 <script type="text/javascript" src="/assets/js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="/assets/js/bootstrap.js"></script>

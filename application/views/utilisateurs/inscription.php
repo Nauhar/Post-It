@@ -11,19 +11,20 @@
 <br>
 
 <div class="container">
-<div class="jumbotron"
 <div id="main">
     <div id="login">
-        <h2 class="">Formulaire d'inscription</h2>
+        <h2>Formulaire d'inscription</h2>
         <?php
-        echo "<div class='error_msg'>";
-        echo validation_errors();
-        echo "</div>";
+        if ("" !== validation_errors()) {
+            echo "<div class='alert alert-danger alert-dismissible' role='alert'>";
+            echo validation_errors();
+            echo "</div>";
+        }
 
         echo "<br/>";
 
 
-        echo form_open('users/validation_inscription', 'class="form-inline"');
+        echo form_open('users/inscription', 'class="form-inline"');
 
         echo form_label('&nbsp&nbsp Nom &nbsp&nbsp ');
         echo form_input('nom');
@@ -94,7 +95,7 @@
         ?>
     </div>
 </div>
-</div>
+
 </div>
 
 
