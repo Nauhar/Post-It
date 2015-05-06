@@ -99,36 +99,69 @@ class Messages extends CI_Controller
                 } else {
                     $photo = '';
                 }
-                $this->messages_model->postTweet($IDevent['IDEvenement'], $nom, $message, $photo, $idTweet);
+                $this->messages_model->postTweet($IDevent['IDEvenement'], $nom, $message, $photo, $idTweet, $urlevenement);
             }
         }
     }
 
     public function moderation_msg($urlevenement){
-        if (isset($this->session->userdata['IDUtilisateur']) == false){
-            $this->session->set_flashdata('error_message', 'Vous devez être connecté pour faire ceci');
-            redirect('accueil/index');
-        }
-
         $this->load->model('evenement_model');
-        if($this->evenement_model->userIsOwner($urlevenement) == 0){
-            //Demander MDP modération, vérifiez si ok et blabla
+        $params = $this->evenement_model->getEventParams($urlevenement);
+
+        //requete permettant de récuperer les messages liés à un evenement
+        $id = $this->messages_model->getIDFromURL($urlevenement);
+        $msg['moderationmessages'] = $this->messages_model->messagesAModérer($id['IDEvenement']);
+        $msg['url'] = $urlevenement;
+
+
+        //si connecté
+        if (isset($this->session->userdata['IDUtilisateur']) == true){
+            //si proprio
+            if(($this->evenement_model->userIsOwner($urlevenement)) == 1) {
+
+                $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('messages/moderation', $msg);
+                $this->load->view('templates/footer');
+
+            //sinon si pas proprio, formulaire soumis et mdp ok
+            }elseif (($this->input->post('submit')) && (md5($this->input->post('mdp')) == $params['PasswordModeration'])) {
+                $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('messages/moderation', $msg);
+                $this->load->view('templates/footer');
+            //sinon
+            }else{
+                //Demander MDP modération, vérifiez si ok et blabla
+                $data['urlevenement'] = $urlevenement;
+                $this->load->helper(array('form', 'url'));
+                $this->load->library('form_validation');
+                $this->load->view('messages/connexion_moderation', $data);
+
+            }
+        //si pas connecté
+        }else{
+            //si formulaire soumis et mdp ok
+            if (($this->input->post('submit')) && (md5($this->input->post('mdp')) == $params['PasswordModeration'])) {
+                $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('messages/moderation', $msg);
+                $this->load->view('templates/footer');
+            }
+            else{
+                //Demander MDP modération, vérifiez si ok et blabla
+                $data['urlevenement'] = $urlevenement;
+                $this->load->helper(array('form', 'url'));
+                $this->load->library('form_validation');
+                $this->load->view('messages/connexion_moderation', $data);
+            }
 
 
 
-        }else {
 
-            //requete permettant de récuperer les messages liés à un evenement
-            $id = $this->messages_model->getIDFromURL($urlevenement);
-            $msg['moderationmessages'] = $this->messages_model->messagesAModérer($id['IDEvenement']);
-            $msg['url'] = $urlevenement;
-
-            $this->load->view('templates/header');
-            $this->load->view('templates/navigation');
-            $this->load->view('messages/moderation', $msg);
-            $this->load->view('templates/footer');
         }
     }
+
 
     public function validermessage($id){
         $this->messages_model->validemessage($id);

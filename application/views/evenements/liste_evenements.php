@@ -8,10 +8,6 @@ echo "</br>";
     <div class="container-fluid" style='margin-left: 10px;'>
             <?php $i = 0 ?>
 
-
-
-
-
         <table class="table table-striped">
 
         <!-- On rows -->
@@ -54,7 +50,6 @@ echo "</br>";
 
         </table>
 
-
 </div>
 
 <a href="/index.php/evenement/creation_evenement" type="button" class="btn btn-default">Créer un évènement</a>
@@ -68,16 +63,10 @@ echo "</br>";
     function supprimer(id) {
 
         var supprimer = 'http://localhost:8888/index.php/evenement/supprimer/'+id;
-        alert(supprimer);
 
-        console.log(id);
         $.post(supprimer, {p: id}, function(data) {
-            alert(data);
            if (data == true) {
-               alert("evenement supprimé");
                $("#post-" + id).slideUp();
-           }else{
-               alert("evenement non supprimé");
            }
 
         });

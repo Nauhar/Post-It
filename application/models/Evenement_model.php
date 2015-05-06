@@ -61,10 +61,10 @@ class Evenement_model extends CI_Model
     {
         $this->db->delete('DesignEvenement', array('IDEvenement' => $idevenement));
         $this->db->delete('ParametresEvenement', array('IDEvenement' => $idevenement));
+        $this->db->delete('Messages', array('IDEvenement' => $idevenement));
 
         $tmp = $this->db->delete('Evenements', array('IDEvenement' => $idevenement));
-        //echo $tmp;
-        //var_dump($tmp);
+
         if ($tmp !== null) {
             echo true;
         }else{
@@ -91,6 +91,17 @@ class Evenement_model extends CI_Model
 
         $query = $this->db->count_all_results();
         return $query;
+    }
+
+    public function getEventParams($urlevenement)
+    {
+        $this->db->select('*');
+        $this->db->from('ParametresEvenement');
+        $this->db->join('Evenements', 'Evenements.IDEvenement = ParametresEvenement.IDEvenement');
+        $this->db->where('URLEvenement', $urlevenement);
+
+        $query = $this->db->get();
+        return $query->row_array();
     }
 
 
