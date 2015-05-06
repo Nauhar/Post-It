@@ -55,7 +55,7 @@ class Messages_model extends CI_Model
             'IDEvenement' => $idevenement
         );
 
-        $this->db->insert('Messages', $data);
+        return $this->db->insert('Messages', $data);
     }
 
     public function messagesAModérer($idevenement)

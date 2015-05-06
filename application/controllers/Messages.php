@@ -63,8 +63,10 @@ class Messages extends CI_Controller
         //Si on a soumis le formulaire
         if($this->input->post('submit')){
             //On insère le message
-            $this->messages_model->postMessage($IDEvenement['IDEvenement'], $this->input->post('nom'), $this->input->post('message'));
-
+            $tmp = $this->messages_model->postMessage($IDEvenement['IDEvenement'], $this->input->post('nom'), $this->input->post('message'));
+            if ($tmp == true) {
+                $data['message'] = "Message posté avec succès";
+            }
         }
 
         $this->load->view('templates/header', $data);
