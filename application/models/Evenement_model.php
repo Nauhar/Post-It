@@ -93,5 +93,16 @@ class Evenement_model extends CI_Model
         return $query;
     }
 
+    public function getEventParams($urlevenement)
+    {
+        $this->db->select('*');
+        $this->db->from('ParametresEvenement');
+        $this->db->join('Evenements', 'Evenements.IDEvenement = ParametresEvenement.IDEvenement');
+        $this->db->where('URLEvenement', $urlevenement);
+
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
 
 }
