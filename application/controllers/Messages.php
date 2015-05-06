@@ -53,12 +53,15 @@ class Messages extends CI_Controller
 
         $this->load->library('form_validation');
 
+        //On récupère l'ID de l'évenement grace a son URL
+        $IDEvenement = $this->messages_model->getIDFromURL($urlevenement);
+
+        //On récupére les infos de l'évenement
+        $this->load->model('evenement_model');
+        $data['evenement'] = $this->evenement_model->getEvent($IDEvenement['IDEvenement']);
+
         //Si on a soumis le formulaire
         if($this->input->post('submit')){
-
-            //On récupère l'ID de l'évenement grace a son URL
-            $IDEvenement = $this->messages_model->getIDFromURL($urlevenement);
-
             //On insère le message
             $this->messages_model->postMessage($IDEvenement['IDEvenement'], $this->input->post('nom'), $this->input->post('message'));
 

@@ -72,5 +72,15 @@ class Evenement_model extends CI_Model
         }
     }
 
+    public function getEvent($idevenement)
+    {
+        $this->db->select('*');
+        $this->db->from('Evenements');
+        $this->db->where('IDEvenement', $idevenement);
+
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
 
 }
