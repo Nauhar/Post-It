@@ -45,7 +45,10 @@ class Evenement extends CI_Controller
     $this->load->view('templates/navigation');
     //var_dump($this->session->userdata['IDUtilisateur']);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     if (isset($this->session->userdata['IDUtilisateur'])){
         $data['title'] = "Créer un evenement";
         $data['message_display'] = $this->session->flashdata('message_display');
