@@ -87,7 +87,7 @@
 
         echo "</br></br>";
 
-        echo form_label('&nbsp&nbsp Hastag à suivre  #&nbsp');
+        echo form_label('&nbsp&nbsp Hashtag à suivre  #&nbsp');
         echo form_input('hastag', '', 'class="form-control"');
 
         echo "</br></br>";

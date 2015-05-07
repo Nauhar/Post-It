@@ -3,35 +3,35 @@
 
 <h2><?php echo $title ?></h2>
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
 
-        <?php $i = 0 ?>
-        <?php foreach ($Messages as $Message):?>
-            <?php $i++ ?>
+        <?php // $i = 0 ?>
+        <?php// foreach ($Messages as $Message):?>
+            <?php // $i++ ?>
 
-            <?php if($i === 5){
-                echo "</div>";
-                echo "<div class='row'>";
-            }
+            <?php // if($i === 5){
+               // echo "</div>";
+               // echo "<div class='row'>";
+            //}
             ?>
 
             <div class="col-lg-3">
-                <?php echo $Message['Message']?> - <?php echo $Message['Auteur']?>
+                <?php // echo $Message['Message']?> - <?php //echo $Message['Auteur']?>
             </div>
-        <?php endforeach ?>
+        <?php //endforeach ?>
 
 
     </div>
 
-</div>
+</div> -->
 
 </br>
 </br>
 </br>
 <div class="row" style="background-color: <?php echo $design['CouleurFondBandeau']  ?>">
     <div class="col-lg-3" style="background-image: <?php echo $design['Logo'] ?>"> LOGO </div>
-    <div class="col-lg-9" style="color: <?php echo $design['CouleurTexteBandeau'] ?>" style="background-color: #0086b3"> <?php echo $design["TexteBandeau"] ?> </div>
+    <div class="col-lg-9" style="color: <?php echo $design['CouleurTexteBandeau'] ?>"> <?php echo $design["TexteBandeau"] ?> </div>
 </div>
 
 <?php //var_dump($design); ?>
@@ -40,7 +40,8 @@
 
 <div class="container-fluid" style="font: <?php echo $design['Police'] ?>" >
 
-        <div class="row" style="color: <?php echo $design['CouleurMessage'] ?>" style="font-size: <?php echo $design['TaillePoliceMessage'] ?>">
+        <div class="row" style="color: <?php echo $design['CouleurMessage'] ?>" style="font-size: <?php echo $design['TaillePoliceMessage']?>">
+            <!--  <div class="row" style="color: <?php echo $design['CouleurMessage']?>; font-family: cursive, serif; font-size:<?php echo $design['TaillePoliceMessage']?>pt"> -->
         <div class="col-lg-3" id="M0">M0</div>
         <div class="col-lg-3" id="M1">M1</div>
         <div class="col-lg-3" id="M2">M2</div>
@@ -55,7 +56,7 @@
 
 </div>
 
-<div class="container-fluid" style="background-color:#EBF300" >PARTENAIRES</div>
+<div class="container-fluid" style="background-color:<?php echo $design['CouleurFondBandeau']  ?>" >PARTENAIRES</div>
 
 <?php  /*var_dump($_SERVER['PATH_INFO']);
 $x = explode("/", $_SERVER['PATH_INFO']);
