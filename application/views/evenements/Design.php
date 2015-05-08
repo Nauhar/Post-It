@@ -26,18 +26,22 @@ echo form_open('Evenement/validation_design/'.$URLEvenement);
 
                     <label class="control-label" for="textinput">Couleur de fond :
                         <input id="color_f" type="color" name='color_page' onchange="javascript:document.getElementById('chosen-colorf').value = document.getElementById('color_f').value;">
-                        <input id="chosen-colorf" type="text" name="color_text_bandeau" readonly value="#ff0000">
+                        <input id="chosen-colorf" type="text" name="color_text_bandeau" readonly value="#000000">
                     </label>
 
                     <?php echo "&nbsp&nbsp&nbsp"?>
 
                     <label class="control-label" for="textinput">Police générale:
                         <select class="selectpicker" data-style="btn-info" name="police_page">
-                            <option>Arial</option>
+                          <!--  <option>Arial</option>
                             <option>Georgia</option>
                             <option>Lucida Sans Unicode</option>
                             <option>Tahoma</option>
-                            <option>Times new roman</option>
+                            <option>Times new roman</option> -->
+                            <option>arial</option>
+                            <option>cursive</option>
+                            <option>monospace</option>
+                            <option>times</option>
                         </select>
                     </label>
 
@@ -71,14 +75,14 @@ echo form_open('Evenement/validation_design/'.$URLEvenement);
 
                 <label class="control-label" for="textinput">Couleur texte :
                     <input id="color_t" type="color" name='color_textbandeau' onchange="javascript:document.getElementById('chosen-colort').value = document.getElementById('color_t').value;">
-                    <input id="chosen-colort" type="text" name="color_text_bandeau" readonly value="#ff0000">
+                    <input id="chosen-colort" type="text" name="color_text_bandeau" readonly value="#000000">
                 </label>
 
                 <?php echo "&nbsp&nbsp&nbsp"?>
 
                 <label class="control-label" for="textinput">Couleur de Fond :
                     <input id="color_fond" type="color" name='color_fondbandeau' onchange="javascript:document.getElementById('chosen-colorfond').value = document.getElementById('color_fond').value;">
-                    <input id="chosen-colorfond" type="text" name="color_fond_bandeau" readonly value="#ff0000">
+                    <input id="chosen-colorfond" type="text" name="color_fond_bandeau" readonly value="#000000">
                 </label>
             </fieldset>
 
@@ -86,6 +90,25 @@ echo form_open('Evenement/validation_design/'.$URLEvenement);
                 <legend> Pseudo</legend>
                 <label class="control-label" for="textinput">Taille police :
                     <select class="selectpicker" data-style="btn-info" name="size_pseudo">
+                        <option>6</option>
+                        <option>8</option>
+                        <option>10</option>
+                    </select>
+                </label>
+
+                <?php echo "&nbsp&nbsp&nbsp"?>
+
+                <label class="control-label" for="textinput">Couleur :
+                    <input id="color_p" type="color" name='colorpseudo' onchange="javascript:document.getElementById('chosen-colorp').value = document.getElementById('color_p').value;">
+                    <input id="chosen-colorp" type="text" name="color_pseudo" readonly value="#000000">
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend> Messages</legend>
+
+                <label class="control-label" for="selectbasic">Taille police :
+                    <select class="selectpicker" data-style="btn-info" name="size_message">
                         <option>16</option>
                         <option>18</option>
                         <option>20</option>
@@ -95,27 +118,8 @@ echo form_open('Evenement/validation_design/'.$URLEvenement);
                 <?php echo "&nbsp&nbsp&nbsp"?>
 
                 <label class="control-label" for="textinput">Couleur :
-                    <input id="color_p" type="color" name='colorpseudo' onchange="javascript:document.getElementById('chosen-colorp').value = document.getElementById('color_p').value;">
-                    <input id="chosen-colorp" type="text" name="color_pseudo" readonly value="#ff0000">
-                </label>
-            </fieldset>
-
-            <fieldset>
-                <legend> Messages</legend>
-
-                <label class="control-label" for="selectbasic">Taille police :
-                    <select class="selectpicker" data-style="btn-info" name="size_message">
-                        <option>26</option>
-                        <option>28</option>
-                        <option>30</option>
-                    </select>
-                </label>
-
-                <?php echo "&nbsp&nbsp&nbsp"?>
-
-                <label class="control-label" for="textinput">Couleur :
                     <input id="color_m" type="color" name="colormessage" onchange="javascript:document.getElementById('chosen-color1').value = document.getElementById('color_m').value;">
-                    <input id="chosen-color1" type="text" name="color_message" readonly value="#ff0000">
+                    <input id="chosen-color1" type="text" name="color_message" readonly value="#000000">
                 </label>
             </fieldset>
     </div>

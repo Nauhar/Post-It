@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/assets/css/bootstrap.css" >
 <!--<link rel="stylesheet" href="/assets/css/postIT_css.css" >-->
 
-<h2><?php echo $title ?></h2>
+<!-- <h2><?php echo $title ?></h2> -->
 
 <!-- <div class="container-fluid">
     <div class="row">
@@ -26,37 +26,33 @@
 
 </div> -->
 
-</br>
-</br>
-</br>
 <div class="row" style="background-color: <?php echo $design['CouleurFondBandeau']  ?>">
     <div class="col-lg-3" style="background-image: <?php echo $design['Logo'] ?>"> LOGO </div>
-    <div class="col-lg-9" style="color: <?php echo $design['CouleurTexteBandeau'] ?>"> <?php echo $design["TexteBandeau"] ?> </div>
+    <div class="col-lg-9" style="color: <?php echo $design['CouleurTexteBandeau'] ?>; font-family: <?php echo $design['Police'] ?>, serif; font-size:25pt"> <?php echo $design["TexteBandeau"] ?> </div>
 </div>
 
 <?php //var_dump($design); ?>
 
 <!--creer une div de la taille de la fenetre, et attribuer CouleurFondPage à cette div -->
 
-<div class="container-fluid" style="font: <?php echo $design['Police'] ?>" >
+<div class="container-fluid" style="font-family: <?php echo $design['Police'] ?>, serif ; background-color: <?php echo $design['CouleurFondPage']  ?> " >
 
-        <div class="row" style="color: <?php echo $design['CouleurMessage'] ?>" style="font-size: <?php echo $design['TaillePoliceMessage']?>">
-            <!--  <div class="row" style="color: <?php echo $design['CouleurMessage']?>; font-family: cursive, serif; font-size:<?php echo $design['TaillePoliceMessage']?>pt"> -->
-        <div class="col-lg-3" id="M0">M0</div>
-        <div class="col-lg-3" id="M1">M1</div>
-        <div class="col-lg-3" id="M2">M2</div>
-        <div class="col-lg-3" id="M3">M3</div>
+    <div class="row" style="color: <?php echo $design['CouleurMessage'] ?>; font-size: <?php echo $design['TaillePoliceMessage']?>pt ; height:290px">
+        <div class="col-lg-3" id="M0"></div>
+        <div class="col-lg-3" id="M1"></div>
+        <div class="col-lg-3" id="M2"></div>
+        <div class="col-lg-3" id="M3"></div>
     </div>
-    <div class="row " style="color: <?php echo $design['CouleurMessage'] ?>">
-        <div class="col-lg-3" id="M4">M4</div>
-        <div class="col-lg-3" id="M5">M5</div>
-        <div class="col-lg-3" id="M6">M6</div>
-        <div class="col-lg-3" id="M7">M7</div>
+    <div class="row" style="color: <?php echo $design['CouleurMessage'] ?>; font-size: <?php echo $design['TaillePoliceMessage']?>pt ; height:290px ">
+        <div class="col-lg-3" id="M4"></div>
+        <div class="col-lg-3" id="M5"></div>
+        <div class="col-lg-3" id="M6"></div>
+        <div class="col-lg-3" id="M7"></div>
     </div>
 
 </div>
 
-<div class="container-fluid" style="background-color:<?php echo $design['CouleurFondBandeau']  ?>" >PARTENAIRES</div>
+<div class="container-fluid" style="background-color:<?php echo $design['CouleurFondBandeau'] ?> ; height:80px">PARTENAIRES</div>
 
 <?php  /*var_dump($_SERVER['PATH_INFO']);
 $x = explode("/", $_SERVER['PATH_INFO']);

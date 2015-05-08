@@ -28,7 +28,7 @@ class Messages extends CI_Controller
         $data['Messages'] = $this->messages_model->getDerniersMessages($urlevenement);
         $data['design'] = $this->design_model->getArguments($urlevenement);
         $data['URLEvenement'] = $urlevenement;
-        $data['title'] = "Liste des messages a afficher";
+       // $data['title'] = "Liste des messages à afficher";
 
         $this->load->view('templates/header', $data);
         $this->load->view('messages/index', $data);
