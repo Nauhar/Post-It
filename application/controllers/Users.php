@@ -174,7 +174,7 @@ public function validation_inscription() {
                     }
                 }else{
                     $data = array(
-                        'error_message' => 'Invalid Username or Password'
+                        'error_message' => 'Nom d\'utilisateur ou mot de passe incorrect'
                     );
                     $this->load->view('utilisateurs/login', $data);
                 }

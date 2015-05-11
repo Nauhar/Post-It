@@ -18,7 +18,7 @@ if (isset($logout_message)) {
 <?php
 if (isset($message_display)) {
     echo "<div class='message'>";
-    echo $message_display;
+    echo " blabla".$message_display;
     echo "</div>";
 }
 ?>
@@ -32,10 +32,18 @@ if (isset($message_display)) {
         <?php
         echo "<div class='error_msg'>";
         if (isset($error_message)) {
-            echo $error_message;
+            echo "<div class='alert alert-danger alert-dismissible' role='alert'>";
+            echo "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span>";
+            echo " ".$error_message;
+            echo "</div>";
         }
-        echo validation_errors();
-        echo "</div>";
+        if (validation_errors() != "") {
+            echo "<div class='alert alert-danger alert-dismissible' role='alert'>";
+            echo "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span>";
+            echo " " . validation_errors();
+            echo "</div>";
+        }
+        //echo "</div>";
         ?>
         <fieldset>
         <div class="form-group-lg">

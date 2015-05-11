@@ -36,7 +36,7 @@ echo "</br>";
                 <td><?php echo $evenement['Lieu']?></td>
                 <td><?php echo $evenement['VilleEvenement']?></td>
                 <td><?php echo $evenement['DateEvenement']?></td>
-                <td><?php echo "<a href='/index.php/messages/index/$evenement[URLEvenement]'>"."Livewall"."</a>"?></td>
+                <td><?php echo "<a target='_blank' href='/index.php/messages/index/$evenement[URLEvenement]'>"."Livewall"."</a>"?></td>
                 <td>
                     <?php if ($evenement['ModerationTexte'] == true){
                         echo "<a href='/index.php/messages/moderation_msg/$evenement[URLEvenement]'><span class='glyphicon glyphicon-check'></span>Modération</a>";
