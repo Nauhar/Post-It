@@ -1,3 +1,4 @@
+<div class="container">
 <div id="main">
     <div id="login">
         <h2>Formulaire de création d'un évènement</h2>
@@ -108,10 +109,11 @@
         echo "<font size='1,5'> Cochez la case si vous souhaitez interdire l'utilisation de certains mots prédéfinis</font>";
         echo "</br></br>";
 
-        echo form_submit('submit', 'Validation', 'class="btn btn-default"');
+        echo form_submit('submit', 'Validation', 'class="btn btn-success"');
         echo form_close();
         ?>
     </div>
+</div>
 </div>
 
 

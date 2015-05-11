@@ -17,8 +17,9 @@ if (isset($logout_message)) {
 ?>
 <?php
 if (isset($message_display)) {
-    echo "<div class='message'>";
-    echo " blabla".$message_display;
+    echo "<div class='alert alert-success alert-dismissible' role='alert'>";
+    echo "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>";
+    echo $message_display;
     echo "</div>";
 }
 ?>

@@ -1,6 +1,6 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
+<link rel="stylesheet" media="screen" type="text/css" href="/assets/css/bootstrap-datepicker.css" >
+<link rel="stylesheet" media="screen" type="text/css" href="/assets/css/bootstrap-datepicker3.css" >
 
 <script type="text/javascript" src="/assets/js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="/assets/js/bootstrap.js"></script>
@@ -12,7 +12,7 @@
 
 <div class="container">
 <div id="main">
-    <div id="login">
+    <div id="login" class="col-lg-9">
         <h2>Formulaire d'inscription</h2>
         <?php
         if ("" !== validation_errors()) {
@@ -27,12 +27,12 @@
         echo form_open('users/inscription', 'class="form-inline"');
 
         echo form_label('&nbsp&nbsp Nom &nbsp&nbsp ');
-        echo form_input('nom');
+        echo form_input('nom', '', 'class="form-control"');
 
         echo "&nbsp&nbsp&nbsp&nbsp";
 
         echo form_label('&nbsp Prénom &nbsp ');
-        echo form_input('prenom');
+        echo form_input('prenom', '', 'class="form-control"');
 
         echo "</br></br>";
 
@@ -46,7 +46,7 @@
         echo "&nbsp&nbsp";
 
         echo form_label('&nbsp&nbsp Mot de Passe &nbsp ');
-        echo form_password('password');
+        echo form_password('password', '', 'class="form-control"');
 
        // echo "<div class='error_msg'>";
         if (isset($message_display)) {
@@ -55,9 +55,9 @@
             echo "<span class='sr-only'>Error:</span>";
             echo $message_display;
         }
-        echo "</div>";
+        //echo "</div>";
 
-        echo "</br>";
+        echo "</br></br>";
 
         echo form_label('&nbsp&nbsp Date de naissance &nbsp '); ?>
 
@@ -77,20 +77,20 @@
        <?php
 
         echo form_label('&nbsp&nbsp Organisation &nbsp ');
-        echo form_input('organisation');
+        echo form_input('organisation', '', 'class="form-control"');
 
         echo "</br></br>";
 
         echo form_label('&nbsp&nbsp Pays &nbsp ');
-        echo form_input('pays');
+        echo form_input('pays', '', 'class="form-control"');
 
         echo "</br></br>";
 
         echo form_label('&nbsp&nbsp Ville &nbsp ');
-        echo form_input('ville');
+        echo form_input('ville', '', 'class="form-control"');
 
         echo "</br></br>";
-        echo form_submit('submit', 'Validation', 'class="btn btn-default"');
+        echo form_submit('submit', 'Validation', 'class="btn btn-success"');
         echo form_close();
         ?>
     </div>

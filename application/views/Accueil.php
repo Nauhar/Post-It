@@ -17,15 +17,15 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                  <div class="item active">
-                      <img src="http://www.mrfizzix.com/amusementparks/images/carousel2.gif" alt="image1">
+                      <img src="/assets/images/img1.png" alt="image1">
                   </div>
 
                   <div class="item">
-                      <img src="/assets/images/Phototropbelle.jpg" alt="image2">
+                      <img src="/assets/images/img2.png" alt="image2">
                   </div>
 
                   <div class="item">
-                      <img src="http://www.scalakids.com/Media/Default/images/Carousel_main.jpg" alt="image3">
+                      <img src="/assets/images/img3.png" alt="image3">
                   </div>
                </div>
 

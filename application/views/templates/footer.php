@@ -1,5 +1,5 @@
 
         </body>
 
-        <footer style=""><em>&copy; 2015</em></footer>
+        <footer style="text-align: center"><em>&copy; 2015 - Nous</em></footer>
 </html>

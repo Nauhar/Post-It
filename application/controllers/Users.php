@@ -54,7 +54,7 @@ class Users extends CI_Controller {
                 $this->form_validation->set_rules('nom', 'Nom', 'trim|required');
                 $this->form_validation->set_rules('prenom', 'Prenom', 'trim|required');
                 $this->form_validation->set_rules('datenaissance', 'Date de Naissance', 'trim|required');
-                $this->form_validation->set_rules('organisation', 'Organisation', 'trim|required');
+                $this->form_validation->set_rules('organisation', 'Organisation', 'trim');
                 $this->form_validation->set_rules('pays', 'Pays', 'trim|required');
                 $this->form_validation->set_rules('ville', 'Ville', 'trim|required');
                 $this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -90,45 +90,7 @@ class Users extends CI_Controller {
             }
         }
 
-        // Validate and store registration data in database
-public function validation_inscription() {
 
-        // Check validation for user input in SignUp form
-            $this->form_validation->set_rules('email_value', 'Email', 'trim|required|valid_email');
-            $this->form_validation->set_rules('nom', 'Nom', 'trim|required');
-            $this->form_validation->set_rules('prenom', 'Prenom', 'trim|required');
-            $this->form_validation->set_rules('datenaissance', 'Date de Naissance', 'trim|required');
-            $this->form_validation->set_rules('organisation', 'Organisation', 'trim|required');
-            $this->form_validation->set_rules('pays', 'Pays', 'trim|required');
-            $this->form_validation->set_rules('ville', 'Ville', 'trim|required');
-            $this->form_validation->set_rules('password', 'Password', 'trim|required');
-
-            if ($this->form_validation->run() == FALSE) {
-                redirect('/users/inscription');
-            } else {
-                $data = array(
-                    'IDUtilisateur' => '',
-                    'NomUtilisateur' => $this->input->post('nom'),
-                    'PrenomUtilisateur' => $this->input->post('prenom'),
-                    'DateNaissance' => $this->input->post('datenaissance'),
-                    'Organisation' => $this->input->post('organisation'),
-                    'Mail' => $this->input->post('email_value'),
-                    'PasswordUtilisateur' => $this->input->post('password'),
-                    'VilleUtilisateur' => $this->input->post('ville'),
-                    'PaysUtilisateur' => $this->input->post('pays'),
-                );
-                $result = $this->users_model->registration_insert($data) ;
-                if ($result == TRUE) {
-                    $this->session->set_flashdata('message_display', 'Compte créé avec succès !');
-                    redirect('/users/login');
-                } else {
-                    $data['message_display'] = 'Un compte utilisant cette adresse mail existe déjà';
-                    $this->load->view('utilisateurs/inscription', $data);
-                }
-            }
-        }
-
-        // Check for user login process
         public function user_login_process() {
 
             $this->form_validation->set_rules('mail', 'Mail', 'trim|required');
