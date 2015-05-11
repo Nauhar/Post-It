@@ -38,9 +38,10 @@ if (isset($message_display)) {
             echo "</div>";
         }
         if (validation_errors() != "") {
-            echo "<div class='alert alert-danger alert-dismissible' role='alert'>";
+            echo "<div class='alert alert-danger alert-dismissible' role='alert' style='font-size: 14px'>";
             echo "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span>";
-            echo " " . validation_errors();
+            $msg = validation_errors();
+            echo $msg;
             echo "</div>";
         }
         //echo "</div>";

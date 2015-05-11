@@ -10,8 +10,6 @@ $(document).ready(function(){
         $.post(gettweets, function(){});
 
         $.post(urlevenement, function(data) {
-            console.log(data);
-
             var json = $.parseJSON(data);
             var champ = 1;
 
@@ -19,7 +17,7 @@ $(document).ready(function(){
                 var msg = "";
                 if(json[i].URLPhoto !== "")
                 {
-                    msg = "<img src='"+json[i].URLPhoto+"' style='max-width:300px; max-height:300px;'";
+                    msg = "<img src='"+json[i].URLPhoto+"' style='max-width:300px; max-height:300px;' />";
                 }
 
 
@@ -35,13 +33,11 @@ $(document).ready(function(){
     }
 
     function updateLoop() {
-        console.log("dans updateLoop");
         updateMsg();
     }
 
     $(function() {
         updateLoop();
-        console.log("dans function()");
     });
 
 
