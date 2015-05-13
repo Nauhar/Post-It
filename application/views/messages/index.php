@@ -7,7 +7,7 @@
 </div>
 
 
-<div class="container-fluid" style="padding-top: 5px; font-family: <?php echo $design['Police'] ?>, serif ; background-color: <?php echo $design['CouleurFondPage']  ?> " >
+<div class="container-fluid" style="min-height: 700px; padding-top: 5px; font-family: <?php echo $design['Police'] ?>, serif ; background-color: <?php echo $design['CouleurFondPage']  ?> " >
 
     <div class="row" style="color: <?php echo $design['CouleurMessage'] ?>; font-size: <?php echo $design['TaillePoliceMessage']?>pt">
         <div class="col-lg-3" id="M0"></div>

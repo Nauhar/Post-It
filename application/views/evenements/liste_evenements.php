@@ -30,8 +30,9 @@ echo "</br>";
                 <td></td>
             </tr>
         <?php foreach ($evenements as $evenement): ?>
-            <tr>
-                <?php echo "<div id='post-".$evenement['IDEvenement']."' class='row'>"?>
+
+                <?php echo "<tr id='post-".$evenement['IDEvenement']."'>"?>
+                <?php //echo "<div id='post-".$evenement['IDEvenement']."' class='row'>"?>
                 <td><?php echo $evenement['NomEvenement']?></td>
                 <td><?php echo $evenement['Lieu']?></td>
                 <td><?php echo $evenement['VilleEvenement']?></td>
@@ -44,8 +45,8 @@ echo "</br>";
                     ?>
                 </td>
                 <td><a href="#" onclick="supprimer(<?php echo $evenement['IDEvenement']; ?>)" class="btn btn-danger">Supprimer</a></td>
-                </div>
-            </tr>
+                </tr>
+
         <?php endforeach ?>
 
         </table>
